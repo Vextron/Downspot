@@ -1,0 +1,98 @@
+.wrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.choice {
+
+    width: 300px;
+    height: 400px;
+    background-color: var(--spotify-black);
+    display: inline-block;
+    border-radius: 40px;
+    margin-left: 30px;
+}
+
+.text {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    color: white;
+    width: 250px;
+    height: 45px;
+    font-size: 1.2em;
+    text-align: center;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#spotify-logo {
+
+    width: 100px;
+    height: 100px;
+    background: url(../../assets/Spotify_Icon_RGB_Green.png) center no-repeat;
+    background-size: 100%;
+    margin: 50px auto 40px;
+}
+
+.icons {
+
+    display: flex;
+    width: 250px;
+    height: 115px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 50px auto 25px;
+}
+
+.material-icons {
+
+    font-size: 120px;
+}
+
+#computer {
+
+    color: var(--forth-color);
+}
+
+#web {
+
+    color: var(--fifth-color);
+}
+
+.action-button {
+
+    display: flex;
+    width: 250px;
+    height: 45px;
+    text-decoration: none;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 17px;
+    cursor: pointer;
+    margin: 50px auto 20px;
+}
+
+#spotify-login {
+
+    background-color: var(--spotify-green);
+}
+
+#desktop-download {
+
+    background-color: var(--forth-color);
+}
+
+#web-app {
+
+    background-color: var(--fifth-color);
+}
