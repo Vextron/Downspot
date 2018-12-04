@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <mat-form-field>
+      <input matInput type="text" placeholder="Search music" [(ngModel)]="value" (keyup)="get_musics($event)">
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" color="primary">
+        <mat-icon>close</mat-icon>
+      </button>
+  </mat-form-field>
+  <button mat-raised-button color="primary" *ngIf="hash.access_token" (click)="get_songs()">Get Songs!</button>
+  <mat-list>
+    <mat-list-item *ngFor="let song of songs"> {{song.name}} </mat-list-item>
+  </mat-list>
+</div>

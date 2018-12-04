@@ -1,0 +1,12 @@
+@import '~@angular/material/_theming.scss';
+
+@include mat-core();
+
+$down-spot-primary: mat-palette($mat-teal, A200);
+$down-spot-accent:  mat-palette($mat-pink, 500, 900, A100);
+
+$down-spot-warn: mat-palette($mat-teal, A200);
+
+$down-spot-theme: mat-dark-theme($down-spot-primary, $down-spot-accent, $down-spot-warn);
+
+@include angular-material-theme($down-spot-theme);

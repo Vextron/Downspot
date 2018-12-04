@@ -1,22 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Varela+Round:400,600');
+@import "./theme.scss";
 
 :root {
 
     --spotify-black: #231E1E;
     --spotify-green: #1DB954;
-    --primary-color: #455C7B;
+    --primary-color: #4A4444;
     --secondary-color: #685C79;
     --third-color: #AC6C82;
     --forth-color: #008D5D;
     --fifth-color: #24C490;
 }
 
+html, body {  }
+
 body {
 
-    background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195);
-    height: 100%;
+    background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195) !important;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    overflow: hidden;
+    margin: 0;
 }
