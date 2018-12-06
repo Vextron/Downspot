@@ -14,6 +14,11 @@ export class LandingComponent implements OnInit {
   private url: string;
 
   ngOnInit() {
+
+    if (!!localStorage.getItem('access_token')) {
+
+      this.router.navigate(['web-downloader']);
+    }
   }
 
   login() {
