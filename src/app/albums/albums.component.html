@@ -1,0 +1,10 @@
+<mat-grid-list cols="5" rowHeight="230px" gutterSize="15px">
+  <mat-grid-tile *ngFor="let album of albums">
+      <div class="display">
+        <img src="{{album.images[0].url}}">
+        <div class="content">
+            {{album.name}}
+        </div>
+      </div>
+  </mat-grid-tile>
+</mat-grid-list>

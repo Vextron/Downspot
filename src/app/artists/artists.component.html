@@ -1,0 +1,10 @@
+<mat-grid-list cols="5" rowHeight="240px" gutterSize="15px">
+  <mat-grid-tile *ngFor="let artist of artists">
+      <div class="display">
+        <img *ngIf="artist.images[0] !== undefined" src="{{artist.images[0].url}}" class="artist">
+        <div class="content">
+            {{artist.name}}
+        </div>
+      </div>
+  </mat-grid-tile>
+</mat-grid-list>

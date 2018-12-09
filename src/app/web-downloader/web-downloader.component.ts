@@ -15,7 +15,7 @@ export class WebDownloaderComponent implements OnInit {
 
   private current_tab = 'playlists';
   private hash: any = { access_token: localStorage.getItem('access_token'), refresh_token: '' };
-  private options: any = { playlists: {data: [], last_seen: ''}, songs: {data: [], last_seen: ''},
+  options: any = { playlists: {data: [], last_seen: ''}, songs: {data: [], last_seen: ''},
                           albums: {data: [], last_seen: ''}, artists: {data: [], last_seen: ''} };
   private timer = null;
 
@@ -36,19 +36,14 @@ export class WebDownloaderComponent implements OnInit {
 
         this.service.get_songs(this.hash.access_token, this.value, this.current_tab).subscribe( data => {
 
+          console.log(this.current_tab, data['items']);
+
           this.options[this.current_tab].data = data['items'];
           this.options[this.current_tab].last_seen = this.value;
-          
+
         });
       }
     }, 1000);
-  }
-
-
-  logout() {
-
-    localStorage.removeItem('access_token');
-    this.router.navigate(['']);
   }
 
   tab_changed(event) {
@@ -62,10 +57,14 @@ export class WebDownloaderComponent implements OnInit {
         console.log(this.current_tab, data['items']);
   
         this.options[this.current_tab].last_seen = this.value;
-
         this.options[this.current_tab].data = data['items'];
       });
     }
+  }
+
+  has_values() {
+
+    return (this.options[this.current_tab].data.length > 0);
   }
 
 }

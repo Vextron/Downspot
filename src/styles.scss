@@ -20,4 +20,10 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
+    
+}
+
+::-webkit-scrollbar {
+
+    display: none;
 }

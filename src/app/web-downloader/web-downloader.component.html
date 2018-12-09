@@ -1,44 +1,25 @@
 <div class="wrapper">
+  
   <mat-form-field>
       <input matInput type="text" placeholder="Search music" [(ngModel)]="value" (keydown)="get_songs($event)">
       <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" color="primary">
         <mat-icon>close</mat-icon>
       </button>
   </mat-form-field>
-  
-  <mat-tab-group mat-align-tabs="center" *ngIf="options.playlists" (selectedTabChange)="tab_changed($event)">
+
+  <mat-tab-group mat-align-tabs="center" *ngIf="options['playlists'].data.length > 0" (selectedTabChange)="tab_changed($event)">
     <mat-tab label="Playlists">
-      <mat-grid-list cols="5" rowHeight="230px" gutterSize="15px">
-        <mat-grid-tile *ngFor="let playlist of options.playlists.data">
-            <div class="display">
-              <img src="{{playlist.images[0].url}}">
-              <div class="content">
-                  {{playlist.name}}
-              </div>
-            </div>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <app-playlists [playlists]="options.playlists.data"></app-playlists>
     </mat-tab>
     <mat-tab label="Songs">
-      <mat-list>
-        <mat-list-item *ngFor="let song of options.songs.data"> {{song.name}} </mat-list-item>
-      </mat-list>
+      <app-song-list [songs]="options.songs.data"></app-song-list>
     </mat-tab>
     <mat-tab label="Albums">
-      <mat-grid-list cols="5" rowHeight="230px" gutterSize="15px">
-        <mat-grid-tile *ngFor="let album of options.albums.data">
-            <div class="display">
-              <img src="{{album.images[0].url}}">
-              <div class="content">
-                  {{album.name}}
-              </div>
-            </div>
-        </mat-grid-tile>
-      </mat-grid-list>
+      <app-albums [albums]="options.albums.data"></app-albums>
     </mat-tab>
-    <mat-tab label="Artists"></mat-tab>
+    <mat-tab label="Artists">
+      <app-artists [artists]="options.artists.data"></app-artists>
+    </mat-tab>
   </mat-tab-group>
-
-  <button mat-raised-button color="primary" *ngIf="hash.access_token" (click)="logout()">Log Out</button>
   
 </div>

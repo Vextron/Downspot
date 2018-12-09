@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppService } from './app.service';
 
@@ -22,11 +23,16 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { WebDownloaderComponent } from './web-downloader/web-downloader.component';
 import { CheckComponent } from './check/check.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { PlaylistsComponent } from './playlists/playlists.component';
+import { SongListComponent } from './song-list/song-list.component';
+import { AlbumsComponent } from './albums/albums.component';
+import { ArtistsComponent } from './artists/artists.component';
 
 const app_routes: Routes = [
 
   { path: '',  component: LandingComponent },
-  { path: 'web-downloader', canActivate: [AuthGuard], component: WebDownloaderComponent },
+  { path: 'web-downloader', canActivate: [AuthGuard], component: NavigationComponent },
   { path: 'check', component: CheckComponent },
 
 ];
@@ -35,7 +41,12 @@ const app_routes: Routes = [
     AppComponent,
     LandingComponent,
     WebDownloaderComponent,
-    CheckComponent
+    CheckComponent,
+    NavigationComponent,
+    PlaylistsComponent,
+    SongListComponent,
+    AlbumsComponent,
+    ArtistsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +59,7 @@ const app_routes: Routes = [
     MatCardModule,
     MatListModule,
     MatTabsModule,
+    MatSidenavModule,
     MatGridListModule,
     FormsModule,
     RouterModule.forRoot(app_routes)
