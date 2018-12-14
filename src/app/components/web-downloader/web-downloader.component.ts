@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { SpotifyService } from '../services/spotify.service';
-import { AppService } from '../app.service';
+import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -19,8 +18,7 @@ export class WebDownloaderComponent implements OnInit {
                           albums: {data: [], last_seen: ''}, artists: {data: [], last_seen: ''} };
   private timer = null;
 
-  constructor(private spotify: SpotifyService, private route: ActivatedRoute, private service: AppService,
-              private router: Router) { }
+  constructor(private service: SpotifyService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
@@ -54,8 +52,6 @@ export class WebDownloaderComponent implements OnInit {
 
       this.service.get_songs(this.hash.access_token, this.value, this.current_tab).subscribe( data => {
 
-        console.log(this.current_tab, data['items']);
-  
         this.options[this.current_tab].last_seen = this.value;
         this.options[this.current_tab].data = data['items'];
       });

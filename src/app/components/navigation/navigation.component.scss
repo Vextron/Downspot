@@ -12,6 +12,25 @@
     width: 20%;
     background-color: var(--spotify-black);
 
+    #profile-pic {
+
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+        border-radius: 50%;
+        margin-right: 20px;
+    } 
+
+    .mat-list-item:first-child {
+
+        margin: 10px auto;
+    }
+
+    span {
+
+        font-family: var(--font-family);
+    }
+    
 }
 
 .mat-sidenav-content {
@@ -19,8 +38,8 @@
     button {
 
         position: fixed;
-        left: 10px;
-        top: 15px;
+        left: 20px;
+        top: 20px;
 
         .mat-icon{
 

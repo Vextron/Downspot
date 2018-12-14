@@ -27,14 +27,14 @@
     height: 45px;
     font-size: 1.2em;
     text-align: center;
-    font-family: 'Varela Round', sans-serif;
+    font-family: var(--font-family);
 }
 
 #spotify-logo {
 
     width: 100px;
     height: 100px;
-    background: url(../../assets/Spotify_Icon_RGB_Green.png) center no-repeat;
+    background: url(../../../assets/Spotify_Icon_RGB_Green.png) center no-repeat;
     background-size: 100%;
     margin: 50px auto 40px;
 }
@@ -76,7 +76,7 @@
     align-items: center;
     text-align: center;
     color: white;
-    font-family: 'Varela Round', sans-serif;
+    font-family: var(--font-family);    
     font-size: 17px;
     cursor: pointer;
     margin: 50px auto 20px;

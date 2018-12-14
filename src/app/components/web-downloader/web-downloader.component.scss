@@ -1,7 +1,7 @@
 
 .wrapper {
 
-    background-image: linear-gradient(to bottom, #231e1e, #2b2524, #332c2a, #3c3330, #443a36);
+    background-image: linear-gradient(to right bottom, #2f4858, #27596a, #146b79, #007d81, #008f84);
     margin: 0px auto;
     min-height: 100vh;
     width: 100%;
@@ -14,7 +14,7 @@
     margin: 0px auto;
     padding: 20px;
     color: white;
-    font-family: 'Varela Round', sans-serif;
+    font-family: var(--font-family);   
 }
 
 .mat-form-field input {
@@ -25,7 +25,7 @@
 .mat-tab-group {
 
     font-size: 15px;
-    font-family: 'Varela Round', sans-serif;
+    font-family: var(--font-family);    
     margin: 0 auto;
     color: white;
     width: 80%;

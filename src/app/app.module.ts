@@ -16,23 +16,30 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-import { AppService } from './app.service';
+import { SpotifyService } from './services/spotify.service';
+import { DataShareService } from './services/data-share.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
-import { WebDownloaderComponent } from './web-downloader/web-downloader.component';
-import { CheckComponent } from './check/check.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { PlaylistsComponent } from './playlists/playlists.component';
-import { SongListComponent } from './song-list/song-list.component';
-import { AlbumsComponent } from './albums/albums.component';
-import { ArtistsComponent } from './artists/artists.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { WebDownloaderComponent } from './components/web-downloader/web-downloader.component';
+import { CheckComponent } from './components/check/check.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
+import { SongListComponent } from './components/song-list/song-list.component';
+import { AlbumsComponent } from './components/albums/albums.component';
+import { ArtistsComponent } from './components/artists/artists.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const app_routes: Routes = [
 
   { path: '',  component: LandingComponent },
-  { path: 'web-downloader', canActivate: [AuthGuard], component: NavigationComponent },
+  { path: 'navigation', canActivate: [AuthGuard], component: NavigationComponent, children: [
+
+      {path: '', redirectTo: 'search' , pathMatch: 'full'},
+      {path: 'search', component: WebDownloaderComponent},
+      {path: 'profile', component: ProfileComponent}
+  ] },
   { path: 'check', component: CheckComponent },
 
 ];
@@ -46,7 +53,8 @@ const app_routes: Routes = [
     PlaylistsComponent,
     SongListComponent,
     AlbumsComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,7 @@ const app_routes: Routes = [
     FormsModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [AppService],
+  providers: [SpotifyService, DataShareService],
   bootstrap: [AppComponent]
 })
 

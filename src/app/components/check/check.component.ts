@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
+import { SpotifyService } from '../../services/spotify.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CheckComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: AppService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private service: SpotifyService, private router: Router) { }
 
   ngOnInit() {
 
@@ -33,7 +33,7 @@ export class CheckComponent implements OnInit {
 
         localStorage.setItem('access_token', hash.access_token);
 
-        this.router.navigate(['web-downloader']);
+        this.router.navigate(['navigation']);
       });
     });
   }

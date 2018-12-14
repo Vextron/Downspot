@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
+import { SpotifyService } from '../../services/spotify.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent implements OnInit {
 
-  constructor(private app_service: AppService, private router: Router) { }
+  constructor(private app_service: SpotifyService, private router: Router) { }
 
   private url: string;
 
@@ -17,7 +17,7 @@ export class LandingComponent implements OnInit {
 
     if (!!localStorage.getItem('access_token')) {
 
-      this.router.navigate(['web-downloader']);
+      this.router.navigate(['navigation']);
     }
   }
 
@@ -26,7 +26,6 @@ export class LandingComponent implements OnInit {
     this.app_service.get_code().subscribe(data => {
 
       console.log(data);
-
       window.location.href = data['res'];
     });
   }
