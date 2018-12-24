@@ -15,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 import { SpotifyService } from './services/spotify.service';
 import { DataShareService } from './services/data-share.service';
@@ -31,6 +32,8 @@ import { AlbumsComponent } from './components/albums/albums.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { ProfileResolver } from './resolvers/profile-resolver.resolver';
+
 const app_routes: Routes = [
 
   { path: '',  component: LandingComponent },
@@ -38,7 +41,7 @@ const app_routes: Routes = [
 
       {path: '', redirectTo: 'search' , pathMatch: 'full'},
       {path: 'search', component: WebDownloaderComponent},
-      {path: 'profile', component: ProfileComponent}
+      {path: 'profile', component: ProfileComponent, resolve: { profile_data: ProfileResolver}}
   ] },
   { path: 'check', component: CheckComponent },
 
@@ -69,10 +72,11 @@ const app_routes: Routes = [
     MatTabsModule,
     MatSidenavModule,
     MatGridListModule,
+    ScrollDispatchModule,
     FormsModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [SpotifyService, DataShareService],
+  providers: [SpotifyService, DataShareService, ProfileResolver],
   bootstrap: [AppComponent]
 })
 

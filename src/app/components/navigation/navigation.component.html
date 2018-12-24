@@ -1,18 +1,18 @@
-<mat-sidenav-container class="container" (backdropClick)="close('backdrop')">
-  <mat-sidenav #sidenav mode="over" (keydown.escape)="close('escape')" disableClose>
+<mat-sidenav-container class="nav-container" (backdropClick)="close('backdrop')">
+  <mat-sidenav #sidenav mode="side" (keydown.escape)="close('escape')" disableClose>
     <mat-list>
       <mat-list-item>
-        <div *ngIf="loaded" id="profile-pic" [ngStyle]="{'background-image': 'url(' + user.images[0].url + ')' }">
+        <div class="circle-back valign-wrapper">
+          <div *ngIf="loaded" class="center-align" id="profile-pic" [ngStyle]="{'background-image': 'url(' + user.images[0].url + ')' }">
+          </div>
         </div>
         <span>{{user.display_name}}</span>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item (click)="close()" [routerLink]="['profile']">Profile<mat-icon mat-list-icon color="primary">person</mat-icon></mat-list-item>
+      <mat-list-item (click)="close()" [routerLink]="['profile']" routerLinkActive="active">Profile<mat-icon mat-list-icon color="primary">person</mat-icon></mat-list-item>
       <mat-list-item>Your Playlists<mat-icon mat-list-icon color="primary">audiotrack</mat-icon></mat-list-item>
-      <mat-list-item (click)="close()" [routerLink]="['search']">Search<mat-icon mat-list-icon color="primary">search</mat-icon></mat-list-item>
-      <mat-list-item (click)="close()" [routerLink]="['search']">Download Songs!<mat-icon mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item (click)="logout()">Logout<mat-icon mat-list-icon color="primary">power_settings_new</mat-icon></mat-list-item>
+      <mat-list-item (click)="close()" [routerLink]="['search']" routerLinkActive="active">Search<mat-icon mat-list-icon color="primary">search</mat-icon></mat-list-item>
+      <mat-list-item (click)="close()">Download Songs!<mat-icon mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
+      <mat-list-item id="logout" (click)="logout()">Logout<mat-icon mat-list-icon color="primary">power_settings_new</mat-icon></mat-list-item>
     </mat-list>
   </mat-sidenav>
 

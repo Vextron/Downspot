@@ -1,25 +1,21 @@
-<div class="wrapper">
-  
-  <mat-form-field>
-      <input matInput type="text" placeholder="Search music" [(ngModel)]="value" (keydown)="get_songs($event)">
-      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" color="primary">
-        <mat-icon>close</mat-icon>
-      </button>
-  </mat-form-field>
+<mat-form-field>
+    <input matInput type="text" placeholder="Search music" [(ngModel)]="value" (keydown)="get_songs($event)">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
 
-  <mat-tab-group mat-align-tabs="center" *ngIf="options['playlists'].data.length > 0" (selectedTabChange)="tab_changed($event)">
-    <mat-tab label="Playlists">
-      <app-playlists [playlists]="options.playlists.data"></app-playlists>
-    </mat-tab>
-    <mat-tab label="Songs">
-      <app-song-list [songs]="options.songs.data"></app-song-list>
-    </mat-tab>
-    <mat-tab label="Albums">
-      <app-albums [albums]="options.albums.data"></app-albums>
-    </mat-tab>
-    <mat-tab label="Artists">
-      <app-artists [artists]="options.artists.data"></app-artists>
-    </mat-tab>
-  </mat-tab-group>
-  
-</div>
+<mat-tab-group mat-align-tabs="center" *ngIf="options['playlists'].data.length > 0" (selectedTabChange)="tab_changed($event)">
+  <mat-tab label="Playlists">
+    <app-playlists [playlists]="options.playlists.data"></app-playlists>
+  </mat-tab>
+  <mat-tab label="Songs">
+    <app-song-list [songs]="options.songs.data"></app-song-list>
+  </mat-tab>
+  <mat-tab label="Albums">
+    <app-albums [albums]="options.albums.data"></app-albums>
+  </mat-tab>
+  <mat-tab label="Artists">
+    <app-artists [artists]="options.artists.data"></app-artists>
+  </mat-tab>
+</mat-tab-group>

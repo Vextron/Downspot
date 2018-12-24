@@ -1,10 +1,8 @@
-<mat-grid-list cols="5" rowHeight="230px" gutterSize="15px">
+<mat-grid-list cols="4" rowHeight="350px" gutterSize="20px">
     <mat-grid-tile *ngFor="let playlist of playlists">
         <div class="display">
-            <img src="{{playlist.images[0].url}}">
-            <div class="content">
-                {{playlist.name}}
-            </div>
+            <div class="z-depth-2" [ngStyle]="{'background-image': 'url(' + playlist.images[0].url + ')' }"></div>
+            <p class="center-align">{{playlist.name}}</p>
         </div>
     </mat-grid-tile>
 </mat-grid-list>

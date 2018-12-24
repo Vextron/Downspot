@@ -6,6 +6,8 @@ import { DataShareService } from '../../services/data-share.service';
 
 import { SpotifyService } from '../../services/spotify.service';
 
+import * as M from '../../../assets/materialize.min.js';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -22,8 +24,6 @@ export class NavigationComponent implements OnInit {
   constructor(private router: Router, private service: SpotifyService, private data_service: DataShareService) { 
 
     this.service.get_auth_user_profile(this.hash.access_token).subscribe( data => {
-
-      console.log(data);
 
       this.user = data;
       this.loaded = true;

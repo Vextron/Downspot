@@ -1,0 +1,29 @@
+.duration {
+
+    position: absolute;
+    right: 0px;
+    opacity: 0.6;
+}
+
+.description {
+
+    position: absolute;
+    bottom: 0px;
+    left: 48px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.mat-list-item:hover {
+
+    .mat-icon, span.name {
+
+        color: #00E676;
+    }
+}
+
+.mat-list-item {
+
+    cursor: pointer;
+    
+}

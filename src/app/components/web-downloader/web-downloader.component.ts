@@ -54,6 +54,9 @@ export class WebDownloaderComponent implements OnInit {
 
         this.options[this.current_tab].last_seen = this.value;
         this.options[this.current_tab].data = data['items'];
+
+        console.log(this.current_tab, data['items']);
+
       });
     }
   }

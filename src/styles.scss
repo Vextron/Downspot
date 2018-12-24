@@ -7,7 +7,7 @@
     --spotify-black: #231E1E;
     --spotify-green: #1DB954;
     --primary-color: #4A4444;
-    --secondary-color: #685C79;
+    --secondary-color: #919191;
     --third-color: #AC6C82;
     --forth-color: #008D5D;
     --fifth-color: #24C490;
@@ -15,16 +15,36 @@
 }
 
 
+html, body {
+
+    width: 100% !important;
+
+}
+
 body {
 
     background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195) !important;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    height: 100vh; 
+}
+
+::-webkit-scrollbar
+{
+  width: 3px;  /* for vertical scrollbars */
+  height: 3px; /* for horizontal scrollbars */
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(255, 255, 255, 0.3);
+}
+
+*:before, *:after{
     margin: 0;
-    
-}
-
-::-webkit-scrollbar {
-
-    display: none;
-}
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    box-sizing: border-box;
+  }
