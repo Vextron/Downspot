@@ -14,7 +14,7 @@ import * as M from '../../../assets/materialize.min.js';
 export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private songs_to_download: Array<Object>;
-  private display_songs: any[] = [];
+  display_songs: any[] = [];
   private subscription: any;
 
   constructor(private data_service: DataShareService, private youtube_service: YoutubeService) {

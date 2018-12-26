@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   top_choices: TopChoices;
   main_frame: MainFrame = { image: '', name: '', artist: '' };
 
-  constructor(private data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute, 
+  constructor(public data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute, 
               ) {
    }
 
