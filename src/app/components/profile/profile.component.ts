@@ -7,29 +7,32 @@ import { ActivatedRoute } from '@angular/router';
 
 import * as M from '../../../assets/materialize.min.js';
 
+interface TopChoices {
+
+  top_artists: any;
+  top_tracks: any;
+}
+
+interface MainFrame {
+
+  image: String;
+  name: String;
+  artist: String;
+}
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
+
 export class ProfileComponent implements OnInit, AfterViewInit {
 
-  user: any;
-  top_choices: any;
+  top_choices: TopChoices;
+  main_frame: MainFrame = { image: '', name: '', artist: '' };
 
-  loaded = false;
-
-  main_frame = { image: '', name: '', artist: '' };
-
-  constructor(private data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute) {
-
-    this.data_service.get_user().subscribe( user => {
-
-      this.user = user;
-
-      this.loaded = true;
-    });
-
+  constructor(private data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute, 
+              ) {
    }
 
   ngOnInit() {
@@ -63,11 +66,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
   change_track(song) {
 
-    console.log("ola");
-    
-
     this.main_frame.image = song.album.images[0].url;
     this.main_frame.name = song.name;
     this.main_frame.artist = song.artists[0].name;
   }
+
 }

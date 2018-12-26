@@ -1,0 +1,35 @@
+<div class="container">
+  <ul class="collapsible popout">
+    <li *ngFor="let song of display_songs">
+      <div class="collapsible-header valign-wrapper">
+        <mat-list>
+            <mat-list-item>
+                <mat-icon matListIcon>music_note</mat-icon>
+                <span class="name" matLine>{{song.song.name}}</span>
+                <span class="description" matLine><span>{{song.song.artists[0].name}}</span> | <span>{{song.song.album.name}}</span></span>
+              </mat-list-item>
+        </mat-list>
+        <i class="material-icons" (click)="get_options(song)">arrow_drop_down</i>
+      </div>
+      <div class="collapsible-body">
+        <div *ngIf="!song.loaded" class="progress">
+          <div class="indeterminate"></div>
+        </div>
+        <div *ngIf="song.loaded">
+            <mat-radio-group [(ngModel)]="song.checked_id">
+              <ul class="collection">
+                <li class="collection-item avatar" *ngFor="let option of song.options">
+                  <img src="{{option.thumbnails.default.url}}" alt="" class="circle">
+                  <span class="title">{{option.title}}</span>
+                  <mat-radio-button color="primary" class="secondary-content" [value]="option.id"></mat-radio-button>
+                </li>
+              </ul>
+          </mat-radio-group>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<button id="download" mat-fab (click)="download()">
+    <mat-icon [inline]="true">get_app</mat-icon>
+</button>

@@ -26,35 +26,32 @@
 
 ::ng-deep {
 
-    .display {
+    .mat-grid-tile {
 
-        width: 300px;
-        height: 300px;
 
         div {
 
             height: 250px;
             width: 250px;
-            margin: auto;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: var(--spotify-black);
             background-size: cover;
-            vertical-align: top;
         }
 
         div.default {
 
-
-            svg {
-
-                margin: auto;
-            }
+            background-image: url(../../../assets/default.svg);
+            background-size: 50%;
         }
 
         div.artist {
 
             border-radius: 50%;
+
+            .content-overlay {
+
+                border-radius: 50%;
+            }
         }
     
         p {
@@ -63,6 +60,56 @@
             color: white;
             font-size: 15px;
             text-align: center;
+        }
+    }
+
+    .content-overlay {
+
+        background: rgba(0,0,0,0.7);
+        width: 250px;
+        height: 250px;
+        opacity: 0;
+        transition: all 0.4s ease-in-out 0s;
+    }
+
+    
+    .content:hover {
+    
+        .content-overlay {
+    
+            opacity: 1;
+        }
+    
+        .content-details {
+    
+            top: 50%;
+            left: 50%;
+            opacity: 1;
+        }
+    }
+    
+    .content-details {
+    
+        font-weight: 100;
+        position: absolute;
+        padding-left: 1em;
+        padding-right: 1em;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease-in-out 0s;
+    
+        i {
+    
+           margin: auto;
+        }
+    
+        i:hover {
+    
+            color: #00E676;
+            cursor: pointer;
         }
     }
 } 

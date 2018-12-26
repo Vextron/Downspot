@@ -11,7 +11,12 @@
       <mat-list-item (click)="close()" [routerLink]="['profile']" routerLinkActive="active">Profile<mat-icon mat-list-icon color="primary">person</mat-icon></mat-list-item>
       <mat-list-item>Your Playlists<mat-icon mat-list-icon color="primary">audiotrack</mat-icon></mat-list-item>
       <mat-list-item (click)="close()" [routerLink]="['search']" routerLinkActive="active">Search<mat-icon mat-list-icon color="primary">search</mat-icon></mat-list-item>
-      <mat-list-item (click)="close()">Download Songs!<mat-icon mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
+      <mat-list-item (click)="close()" [routerLink]="['download']" routerLinkActive="active">
+        
+        Download
+        <mat-icon mat-list-icon color="primary">get_app</mat-icon>
+        
+      </mat-list-item>
       <mat-list-item id="logout" (click)="logout()">Logout<mat-icon mat-list-icon color="primary">power_settings_new</mat-icon></mat-list-item>
     </mat-list>
   </mat-sidenav>

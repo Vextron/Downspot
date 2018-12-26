@@ -1,0 +1,75 @@
+.description {
+
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.collapsible li:hover {
+
+    .mat-icon, span.name {
+
+        color: #00E676;
+    }
+}
+
+.mat-list {
+
+    width: 100%;
+
+    .mat-list-item {
+
+        cursor: pointer;
+        width: 100%;
+       
+        .mat-icon {
+    
+            display: inline;
+        }
+    }
+    
+}
+
+
+.collapsible {
+
+    border: none;
+
+    .collapsible-header {
+
+        background-color: transparent;
+        border: none;
+        width: 100%;
+
+        i {
+
+            position: relative;
+            right: 0px;
+         }
+     
+         i:hover {
+     
+             color: #00E676;
+             cursor: pointer;
+         }
+    }
+
+    .collapsible-body {
+
+        border: none;
+    }
+}
+
+.collection-item {
+
+    background-color: transparent !important;
+    border: none;
+}
+
+#download {
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    font-size: 25px;
+}

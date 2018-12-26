@@ -1,8 +1,14 @@
 <mat-grid-list cols="4" rowHeight="350px" gutterSize="20px">
   <mat-grid-tile *ngFor="let album of albums">
-      <div class="display">
-        <div class="z-depth-2" [ngStyle]="{'background-image': 'url(' + album.images[0].url + ')' }"></div>
-        <p class="center-align">{{album.name}}</p>
+    <div>
+      <div class="content z-depth-2" [ngStyle]="{'background-image': 'url(' + album.images[0].url + ')' }">
+          <div class="content-overlay"></div>
+          <div class="content-details valign-wrapper">
+              <i class="large material-icons">list</i>
+              <i class="large material-icons" (click)="data_service.openSnackBar(album)">add</i>
+          </div>
       </div>
+      <p class="center-align">{{album.name}}</p>
+  </div>
   </mat-grid-tile>
 </mat-grid-list>

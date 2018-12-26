@@ -1,5 +1,7 @@
 import { Component, OnChanges, Input } from '@angular/core';
 
+import { DataShareService } from '../../services/data-share.service';
+
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
@@ -9,7 +11,7 @@ export class SongListComponent implements OnChanges {
 
   @Input() songs: Array<any>;
 
-  constructor() { }
+  constructor(private data_service: DataShareService) { }
 
   ngOnChanges() {
 
@@ -24,8 +26,5 @@ export class SongListComponent implements OnChanges {
 
       return item;
     });
-
-    console.log(this.songs);
   }
-
 }

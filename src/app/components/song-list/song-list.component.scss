@@ -7,9 +7,6 @@
 
 .description {
 
-    position: absolute;
-    bottom: 0px;
-    left: 48px;
     font-size: 14px;
     opacity: 0.6;
 }
@@ -25,5 +22,16 @@
 .mat-list-item {
 
     cursor: pointer;
-    
+
+    i {
+
+       position: absolute;
+       right: 60px;
+    }
+
+    i:hover {
+
+        color: #00E676;
+        cursor: pointer;
+    }
 }

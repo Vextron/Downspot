@@ -134,6 +134,11 @@ div.carousel {
     }
 }
 
+.name {
+
+    width: 77%;
+}
+
 .duration {
 
     position: absolute;
@@ -143,9 +148,7 @@ div.carousel {
 
 .description {
 
-    position: absolute;
-    bottom: 0px;
-    left: 48px;
+    width: 80%;
     font-size: 14px;
     opacity: 0.6;
 }
@@ -198,5 +201,3 @@ div.carousel {
         cursor: pointer;
     }
 }
-
-
