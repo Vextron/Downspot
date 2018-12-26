@@ -4,12 +4,14 @@
   "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --proxy-config proxy.config.json",
+    "start-dev": "ng serve -o --proxy-config proxy.config.json",
+    "start": "node server.js",
     "serve": "nodemon server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod",
     "electron": "ng build --base-href ./ && electron ."
   },
   "private": true,
@@ -26,14 +28,15 @@
     "@angular/router": "~7.1.0",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
+    "file-saver": "^2.0.0",
     "hammerjs": "^2.0.8",
     "materialize-css": "^1.0.0-rc.2",
     "request": "^2.88.0",
     "rxjs": "~6.3.3",
+    "simple-youtube-api": "^5.1.1",
     "spotify-web-api-node": "^4.0.0",
     "tslib": "^1.9.0",
     "youtube-dl": "^1.12.2",
-    "youtube-search": "^1.1.3",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
@@ -57,5 +60,9 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
+  },
+  "engines": {
+    "node": "11.3.0",
+    "npm": "6.4.1"
   }
 }
