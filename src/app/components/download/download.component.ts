@@ -2,6 +2,8 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { DataShareService } from '../../services/data-share.service';
 import { YoutubeService } from '../../services/youtube.service';
 
+import { saveAs } from 'file-saver';
+
 import * as M from '../../../assets/materialize.min.js';
 
 @Component({
@@ -12,7 +14,7 @@ import * as M from '../../../assets/materialize.min.js';
 export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private songs_to_download: Array<Object>;
-  private display_songs: Object[] = [];
+  private display_songs: any[] = [];
   private subscription: any;
 
   constructor(private data_service: DataShareService, private youtube_service: YoutubeService) {
@@ -48,7 +50,6 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.youtube_service.get_info(song.song).subscribe( data => {
 
-        console.log(data);
         song.options = data;
         song.loaded = true;
       });
@@ -59,8 +60,12 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.display_songs.forEach( song => {
 
-      console.log(song.checked_id);
-    })
+      this.youtube_service.download_song(song.checked_id, song.song.name).subscribe( data => {
+
+        const file = new Blob([data], { type: 'audio/mp3' });
+        saveAs(file, `${song.song.name}.mp3`);
+      });
+    });
   }
 
 }

@@ -14,4 +14,11 @@ export class YoutubeService {
 
     return this.http.get('http://localhost:4200/api/download_options', {params: params});
   }
+
+  download_song(id, name) {
+
+    const params = new HttpParams().set('video_id', id).set('name', name);
+
+    return this.http.get('http://localhost:4200/api/download', { params: params, responseType: 'blob'});
+  }
 }
