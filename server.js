@@ -6,7 +6,6 @@ const path = require('path');
 
 const SpotifyWebApi = require('spotify-web-api-node');
 const YouTube = require('simple-youtube-api');
-const ytdl = require('youtube-dl');
 
 const youtube = new YouTube(process.env.YTAPI);
 
