@@ -16,14 +16,14 @@ const showDialog = true;
 const credentials = {
   clientId : process.env.CLIENTID,
   clientSecret : process.env.CLIENTSECRET,
-  redirectUri : 'http://localhost:4200/check'
+  redirectUri : 'https://downspot.herokuapp.com/check'
 }
 
 var spotifyApi = new SpotifyWebApi(credentials);
 
 const app = express();
 
-const port = process.env.PORT || 8080;
+const port = (process.env.PORT || 8080);
 
 app.use(express.static(__dirname + '/dist'));
 
