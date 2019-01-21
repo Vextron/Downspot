@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+
 import { MatSidenav } from '@angular/material/sidenav';
+
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataShareService } from '../../services/data-share.service';
 
@@ -21,27 +24,27 @@ export class NavigationComponent implements OnInit {
   user: any = {};
   loaded = false;
 
-  constructor(private router: Router, private service: SpotifyService, private data_service: DataShareService) { 
-
-    this.service.get_auth_user_profile(this.hash.access_token).subscribe( data => {
-
-      this.user = data;
-      this.loaded = true;
-
-      this.data_service.add_user(data);
-    });
-  }
+  constructor(private router: Router, private service: SpotifyService, private data_service: DataShareService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
 
+    this.data_service.get_user().subscribe( user => {
+
+      this.user = user;
+      this.loaded = true;
+    });
   }
 
   close() {
+
     this.sidenav.close();
   }
 
   logout() {
+
     localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
     this.router.navigate(['']);
   }
 }

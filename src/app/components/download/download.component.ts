@@ -60,11 +60,14 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.display_songs.forEach( song => {
 
-      this.youtube_service.download_song(song.checked_id, song.song.name).subscribe( data => {
+      if (!!song) {
 
-        const file = new Blob([data], { type: 'audio/mp3' });
-        saveAs(file, `${song.song.name}.mp3`);
-      });
+        this.youtube_service.download_song(song.checked_id, song.song.name).subscribe( data => {
+
+          const file = new Blob([data], { type: 'audio/mp3' });
+          saveAs(file, `${song.song.name}.mp3`);
+        });
+      }
     });
   }
 

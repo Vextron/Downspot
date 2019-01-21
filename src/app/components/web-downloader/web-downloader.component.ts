@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class WebDownloaderComponent implements OnInit {
 
-  value = 'Type your song here';
+  value = '';
 
   private current_tab = 'playlists';
   private hash: any = { access_token: localStorage.getItem('access_token'), refresh_token: '' };

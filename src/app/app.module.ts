@@ -37,16 +37,18 @@ import { ProfileComponent } from './components/profile/profile.component';
 
 import { ProfileResolver } from './resolvers/profile-resolver.resolver';
 import { DownloadComponent } from './components/download/download.component';
+import { PlaylistDetailsComponent } from './components/playlist-details/playlist-details.component';
 
 const app_routes: Routes = [
 
   { path: '',  component: LandingComponent },
   { path: 'navigation', canActivate: [AuthGuard], component: NavigationComponent, children: [
 
-      {path: '', redirectTo: 'search' , pathMatch: 'full'},
+      {path: '', redirectTo: 'profile' , pathMatch: 'full'},
       {path: 'search', component: WebDownloaderComponent},
       {path: 'profile', component: ProfileComponent, resolve: { profile_data: ProfileResolver}},
-      {path: 'download', component: DownloadComponent}
+      {path: 'download', component: DownloadComponent},
+      {path: 'playlist/:id', component: PlaylistDetailsComponent}
   ] },
   { path: 'check', component: CheckComponent },
 
@@ -63,7 +65,8 @@ const app_routes: Routes = [
     AlbumsComponent,
     ArtistsComponent,
     ProfileComponent,
-    DownloadComponent
+    DownloadComponent,
+    PlaylistDetailsComponent
   ],
   imports: [
     BrowserModule,

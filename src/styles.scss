@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Varela+Round:400,600');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import "./theme.scss";
 
 :root {
@@ -11,7 +12,7 @@
     --third-color: #AC6C82;
     --forth-color: #008D5D;
     --fifth-color: #24C490;
-    --font-family: 'Varela Round', sans-serif;
+    --font-family: 'Roboto', sans-serif;
 }
 
 
@@ -23,8 +24,11 @@ html, body {
 
 body {
 
-    background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195) !important;
+    //background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195) !important;
+    background-image: url(./assets/neon.png)!important;
     background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     background-attachment: fixed;
     height: 100vh; 
 }

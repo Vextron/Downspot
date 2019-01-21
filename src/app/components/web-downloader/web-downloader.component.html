@@ -1,9 +1,19 @@
-<mat-form-field>
+<!-- <mat-form-field>
     <input matInput type="text" placeholder="Search music" [(ngModel)]="value" (keydown)="get_songs()">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" color="primary">
       <mat-icon>close</mat-icon>
     </button>
-</mat-form-field>
+</mat-form-field> -->
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">search</i>
+      <input id="search" type="text"[(ngModel)]="value" (keydown)="get_songs()">
+      <label for="search">Search Music</label>
+      <i id="close" *ngIf="value" (click)="value=''" class="material-icons prefix">clear</i>
+    </div>
+  </div>
+</div>
 
 <mat-tab-group mat-align-tabs="center" *ngIf="options['playlists'].data.length > 0" (selectedTabChange)="tab_changed($event)">
   <mat-tab label="Playlists">

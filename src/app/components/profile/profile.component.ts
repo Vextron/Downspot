@@ -11,6 +11,7 @@ interface TopChoices {
 
   top_artists: any;
   top_tracks: any;
+  playlists: any;
 }
 
 interface MainFrame {
@@ -31,9 +32,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   top_choices: TopChoices;
   main_frame: MainFrame = { image: '', name: '', artist: '' };
 
-  constructor(public data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute, 
-              ) {
-   }
+  constructor(public data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute) {}
 
   ngOnInit() {
 
@@ -49,13 +48,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
       const min = (new_time / 60).toString().split('.')[0];
       const sec = Math.floor((new_time % 60));
-      
       item.duration_ms = min + ':' + Math.floor((sec / 10)).toString() + Math.floor((sec % 10)).toString();
 
       return item;
     });
-
-    console.log(this.top_choices);
   }
 
   ngAfterViewInit() {

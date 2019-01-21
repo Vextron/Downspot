@@ -10,13 +10,13 @@ export class SpotifyService {
 
         const headers = new HttpHeaders().set('Access-Control-Allow-Origin', '*');
 
-        return this.http.get('/login', {headers: headers});
+        return this.http.get('http://localhost:4200/api/login', {headers: headers});
     }
 
     get_token(code: string) {
         const params = new HttpParams().set('code', code);
 
-        return this.http.get('http://localhost:8080/token', {params: params});
+        return this.http.get('http://localhost:4200/api/token', {params: params});
     }
 
     get_songs(access_token: string, to_search: string, type: string = 'playlists') {
@@ -24,19 +24,21 @@ export class SpotifyService {
         const params = new HttpParams().set('type', type).set('to_search', to_search);
         const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
 
-        return this.http.get('http://localhost:8080/getsongs', {headers: header, params: params});
+        return this.http.get('http://localhost:4200/api/getsongs', {headers: header, params: params});
     }
 
     get_auth_user_profile(access_token: string) {
         const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
 
-        return this.http.get('http://localhost:8080/profile', {headers: header});
+        return this.http.get('http://localhost:4200/api/profile', {headers: header});
     }
 
-    get_top_tracks(access_token: string) {
+    get_top_tracks(access_token: string, id: string) {
         const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
 
-        return this.http.get('http://localhost:8080/top', {headers: header});
+        const params = new HttpParams().set('id', id);
+
+        return this.http.get('http://localhost:4200/api/top', {headers: header, params: params});
     }
 }
 

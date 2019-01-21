@@ -10,7 +10,7 @@
 
     width: 300px;
     height: 400px;
-    background-color: var(--spotify-black);
+    background-color: transparent;
     display: inline-block;
     border-radius: 40px;
     margin-left: 30px;
@@ -34,7 +34,7 @@
 
     width: 100px;
     height: 100px;
-    background: url(../../../assets/Spotify_Icon_RGB_Green.png) center no-repeat;
+    background: url(../../../assets/Spotify_Icon_RGB_White.png) center no-repeat;
     background-size: 100%;
     margin: 50px auto 40px;
 }

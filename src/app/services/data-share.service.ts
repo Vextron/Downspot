@@ -10,7 +10,8 @@ export class DataShareService {
 
   constructor(public snackbar: MatSnackBar) { }
 
-  private user_source = new BehaviorSubject<Object>({});
+  private user_source = (!!localStorage.getItem('user')) ? new BehaviorSubject<Object>(JSON.parse(localStorage.getItem('user')))
+                                                         : new BehaviorSubject<Object>({});
   private to_download = new BehaviorSubject<Array<Object>>([]);
 
   user$ = this.user_source.asObservable();
@@ -28,7 +29,6 @@ export class DataShareService {
 
   add_song(song: Object) {
 
-    console.log(song);
     this.to_download.next([...this.to_download.getValue(), song]);
   }
 
