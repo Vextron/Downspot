@@ -1,6 +1,6 @@
-<h2>Maybe You Like It</h2>
+<h2>You Have Stalked</h2>
 
-<mat-grid-list cols="4" rowHeight="200px">
+<mat-grid-list cols="4" rowHeight="250px">
     <mat-grid-tile *ngFor="let item of top_choices.top_artists.items">
         <div class="rec-card" [ngStyle]="{'background-image': 'url(' + item.images[0].url + ')' }">
             <div class="rec-title">
@@ -10,27 +10,20 @@
     </mat-grid-tile>
 </mat-grid-list>
 
-<div class="titles">
-    <h2>Your Poison Has Been</h2>
-    <h2>Some Of Your Playlists</h2>
-</div>
+<h2>Your Poison Has Been</h2>
 
-<mat-grid-list cols="4" rowHeight="300px" gutterSize="20px">
-    
-    <mat-grid-tile id="top-songs" colspan="2">
-        <mat-list >
-            <mat-list-item *ngFor="let song of top_choices.top_tracks.items">
-                <span matLine class="truncate">{{song.name}}</span>
-                <mat-icon>play_circle_outline</mat-icon>
-                <mat-icon (click)="data_service.openSnackBar(song)">add</mat-icon>
-            </mat-list-item>
-        </mat-list>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="2">
-        <mat-grid-list id="top-playlists"  cols="3" rowHeight="150px" gutterSize="10px">
-            <mat-grid-tile *ngFor="let playlist of top_choices.playlists.items">
-                <div class="playlist-cover" [ngStyle]="{'background-image': 'url(' + playlist.images[0].url + ')' }"></div>
-            </mat-grid-tile>
-        </mat-grid-list>
+<mat-list id="top-songs">
+    <mat-list-item *ngFor="let song of top_choices.top_tracks.items">
+        <span matLine class="truncate">{{song.name}}</span>
+        <mat-icon>play_circle_outline</mat-icon>
+        <mat-icon (click)="data_service.openSnackBar(song)">add</mat-icon>
+    </mat-list-item>
+</mat-list>
+
+<h2>Some Of Your Playlists</h2>
+
+<mat-grid-list id="top-playlists" cols="3" rowHeight="250px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let playlist of top_choices.playlists.items">
+        <div class="playlist-cover" [ngStyle]="{'background-image': 'url(' + playlist.images[0].url + ')' }"></div>
     </mat-grid-tile>
 </mat-grid-list>

@@ -31,8 +31,8 @@ router.get('/top', (req, res) => {
     let response = {};
   
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
-  
-    loggedInSpotifyApi.getMyTopTracks({limit: 5}).then( data => {
+    
+    loggedInSpotifyApi.getMyTopTracks({limit: 10}).then( data => {
   
       response['top_tracks'] = data.body;
       
@@ -40,10 +40,9 @@ router.get('/top', (req, res) => {
   
         response['top_artists'] = data.body;
   
-        loggedInSpotifyApi.getUserPlaylists(id, {limit: 6}).then( data => {
+        loggedInSpotifyApi.getUserPlaylists(id, {limit: 9}).then( data => {
   
           response['playlists'] = data.body;
-  
           res.send(response);
   
         }).catch( err => {

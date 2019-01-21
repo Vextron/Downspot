@@ -40,5 +40,12 @@ export class SpotifyService {
 
         return this.http.get('http://localhost:4200/api/top', {headers: header, params: params});
     }
+
+    get_artists(access_token: string) {
+
+        const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+
+        return this.http.get('http://localhost:4200/api/artists', {headers: header});
+    }
 }
 

@@ -5,6 +5,7 @@ const auth_flow = require('./routes/auth_flow');
 const download = require('./routes/download');
 const profile = require('./routes/profile');
 const search = require('./routes/search');
+const artists = require('./routes/artists');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/', auth_flow);
 app.use('/', download);
 app.use('/', profile);
 app.use('/', search);
+app.use('/', artists);
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname)));
 

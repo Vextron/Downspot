@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">search</i>
+      <input id="search" type="text"[(ngModel)]="value" (keydown)="get_songs()">
+      <label for="search">Filter</label>
+      <i id="close" *ngIf="value" (click)="value=''" class="material-icons prefix">clear</i>
+    </div>
+  </div>
+</div>
+
+<mat-grid-list cols="3" rowHeight="350px" gutterSize="10px">
+  <mat-grid-tile *ngFor="let artist of artists">
+      <div>
+        <div class="content artist z-depth-2" *ngIf="artist.images[0] !== undefined" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')' }">
+          <div class="content-overlay round"></div>
+          <div class="content-details valign-wrapper">
+              <i class="medium material-icons">person</i>
+          </div>
+        </div>
+        <div class="content artist default valign-wrapper z-depth-2" *ngIf="artist.images[0] == undefined">
+          <div class="content-overlay round"></div>
+          <div class="content-details valign-wrapper">
+              <i class="medium material-icons">person</i>
+          </div>
+        </div>
+        <p class="center-align">{{artist.name}}</p>  
+      </div>
+  </mat-grid-tile>
+</mat-grid-list>

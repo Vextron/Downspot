@@ -14,13 +14,6 @@ interface TopChoices {
   playlists: any;
 }
 
-interface MainFrame {
-
-  image: String;
-  name: String;
-  artist: String;
-}
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -30,18 +23,12 @@ interface MainFrame {
 export class ProfileComponent implements OnInit, AfterViewInit {
 
   top_choices: TopChoices;
-  main_frame: MainFrame = { image: '', name: '', artist: '' };
 
   constructor(public data_service: DataShareService, private service: SpotifyService, private route: ActivatedRoute) {}
 
   ngOnInit() {
 
     this.top_choices = this.route.snapshot.data.profile_data;
-
-    this.main_frame.image = this.top_choices.top_tracks.items[0].album.images[0].url;
-    this.main_frame.name = this.top_choices.top_tracks.items[0].name;
-    this.main_frame.artist = this.top_choices.top_tracks.items[0].artists[0].name;
-
     this.top_choices.top_tracks.items = this.top_choices.top_tracks.items.map( item => {
 
       const new_time: number = item.duration_ms / 1000;
@@ -59,12 +46,4 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     const elems = document.querySelectorAll('.carousel');
     const instances = M.Carousel.init(elems, {});
   }
-
-  change_track(song) {
-
-    this.main_frame.image = song.album.images[0].url;
-    this.main_frame.name = song.name;
-    this.main_frame.artist = song.artists[0].name;
-  }
-
 }

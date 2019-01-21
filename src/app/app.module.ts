@@ -34,10 +34,13 @@ import { SongListComponent } from './components/song-list/song-list.component';
 import { AlbumsComponent } from './components/albums/albums.component';
 import { ArtistsComponent } from './components/artists/artists.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
-import { ProfileResolver } from './resolvers/profile-resolver.resolver';
 import { DownloadComponent } from './components/download/download.component';
 import { PlaylistDetailsComponent } from './components/playlist-details/playlist-details.component';
+import { ArtistsPageComponent } from './components/artists-page/artists-page.component';
+
+import { ProfileResolver } from './resolvers/profile-resolver.resolver';
+import { ArtistsResolver } from './resolvers/artists-resolver.resolver';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
 
 const app_routes: Routes = [
 
@@ -46,13 +49,15 @@ const app_routes: Routes = [
 
       {path: '', redirectTo: 'profile' , pathMatch: 'full'},
       {path: 'search', component: WebDownloaderComponent},
-      {path: 'profile', component: ProfileComponent, resolve: { profile_data: ProfileResolver}},
+      {path: 'profile', component: ProfileComponent, resolve: { profile_data: ProfileResolver }},
+      {path: 'artists', component: ArtistsPageComponent, resolve: { artists_data: ArtistsResolver }},
+      {path: 'artists/:id', component: ArtistsPageComponent},
       {path: 'download', component: DownloadComponent},
       {path: 'playlist/:id', component: PlaylistDetailsComponent}
   ] },
   { path: 'check', component: CheckComponent },
 
-];
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +71,9 @@ const app_routes: Routes = [
     ArtistsComponent,
     ProfileComponent,
     DownloadComponent,
-    PlaylistDetailsComponent
+    PlaylistDetailsComponent,
+    ArtistsPageComponent,
+    ArtistDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +95,7 @@ const app_routes: Routes = [
     MatRadioModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [SpotifyService, DataShareService, ProfileResolver],
+  providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver],
   bootstrap: [AppComponent]
 })
 
