@@ -48,10 +48,12 @@ import { AlbumsResolver } from './resolvers/albums-resolver.resolver';
 import { AlbumDetailResolver } from './resolvers/album-detail.resolver';
 import { PlaylistResolver } from './resolvers/playlists-resolver.resolver';
 import { PlaylistDetailResolver } from './resolvers/playlist-detail.resolver';
+import { SavedSongsResolver } from './resolvers/saved-songs.resolver';
 
 import { AlbumSongListComponent } from './components/album-song-list/album-song-list.component';
 import { PlaylistsPageComponent } from './components/playlists-page/playlists-page.component';
 import { PlaylistSongListComponent } from './components/playlist-song-list/playlist-song-list.component';
+import { SavedSongsComponent } from './components/saved-songs/saved-songs.component';
 
 const app_routes: Routes = [
 
@@ -67,7 +69,8 @@ const app_routes: Routes = [
       {path: 'album/:id', component: AlbumDetailComponent, resolve: { album_tracks: AlbumDetailResolver }},
       {path: 'playlists', component: PlaylistsPageComponent, resolve: { playlists: PlaylistResolver }},
       {path: 'playlist/:id', component: PlaylistDetailsComponent, resolve: { playlist_tracks: PlaylistDetailResolver }},
-      {path: 'download', component: DownloadComponent}
+      {path: 'download', component: DownloadComponent},
+      {path: 'songs', component: SavedSongsComponent, resolve: { saved_songs: SavedSongsResolver }}
 
   ]},
   { path: 'check', component: CheckComponent },
@@ -92,7 +95,8 @@ const app_routes: Routes = [
     AlbumDetailComponent,
     AlbumSongListComponent,
     PlaylistsPageComponent,
-    PlaylistSongListComponent
+    PlaylistSongListComponent,
+    SavedSongsComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,7 @@ const app_routes: Routes = [
     RouterModule.forRoot(app_routes)
   ],
   providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver, ArtistDetailResolver, AlbumsResolver,
-              AlbumDetailResolver, PlaylistResolver, PlaylistDetailResolver],
+              AlbumDetailResolver, PlaylistResolver, PlaylistDetailResolver, SavedSongsResolver],
   bootstrap: [AppComponent]
 })
 

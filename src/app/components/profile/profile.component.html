@@ -16,8 +16,4 @@
 
 <h2>Some Of Your Playlists</h2>
 
-<mat-grid-list id="top-playlists" cols="3" rowHeight="250px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let playlist of top_choices.playlists.items">
-        <div class="playlist-cover" [ngStyle]="{'background-image': 'url(' + playlist.images[0].url + ')' }"></div>
-    </mat-grid-tile>
-</mat-grid-list>
+<app-playlists [playlists]="top_choices.playlists.items"></app-playlists>

@@ -82,5 +82,12 @@ export class SpotifyService {
 
         return this.http.get(`http://localhost:4200/api/playlist/${id}`, {headers: header});
     }
+
+    get_saved_songs(access_token: string) {
+
+        const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+
+        return this.http.get('http://localhost:4200/api/songs', {headers: header});
+    }
 }
 
