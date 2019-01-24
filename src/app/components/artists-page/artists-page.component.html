@@ -9,22 +9,4 @@
   </div>
 </div>
 
-<mat-grid-list cols="3" rowHeight="350px" gutterSize="10px">
-  <mat-grid-tile *ngFor="let artist of cpy_artists">
-      <div>
-        <div *ngIf="artist.images[0] !== undefined" (click)="details(artist.id)" class="content artist z-depth-2"  [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')' }">
-          <div class="content-overlay round"></div>
-          <div class="content-details valign-wrapper">
-              <i class="medium material-icons">person</i>
-          </div>
-        </div>
-        <div (click)="details(artist.id)" class="content artist default valign-wrapper z-depth-2" *ngIf="artist.images[0] == undefined">
-          <div class="content-overlay round"></div>
-          <div class="content-details valign-wrapper">
-              <i class="medium material-icons">person</i>
-          </div>
-        </div>
-        <p class="center-align">{{artist.name}}</p>  
-      </div>
-  </mat-grid-tile>
-</mat-grid-list>
+<app-artists [artists]="cpy_artists"></app-artists>

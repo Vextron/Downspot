@@ -20,7 +20,6 @@ export class AlbumsPageComponent implements OnInit {
 
     this.albums = this.route.snapshot.data.albums_data.items.map( album => album.album);
     this.cpy_albums = this.albums;
-    console.log(this.albums);
   }
 
   clear() {
@@ -46,10 +45,5 @@ export class AlbumsPageComponent implements OnInit {
 
     }, 300);
   }
-
- /*  details(id) {
-
-    this.router.navigate(['navigation/artist', id]);
-  } */
 
 }

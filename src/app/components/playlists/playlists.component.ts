@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { DataShareService } from '../../services/data-share.service';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-playlists',
   templateUrl: './playlists.component.html',
@@ -11,9 +13,14 @@ export class PlaylistsComponent implements OnInit {
 
   @Input() playlists;
 
-  constructor(private data_service: DataShareService) { }
+  constructor(private data_service: DataShareService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  details(id) {
+
+    this.router.navigate(['/navigation/playlist', id]);
   }
 
 }

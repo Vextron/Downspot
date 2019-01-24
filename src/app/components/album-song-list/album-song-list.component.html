@@ -1,0 +1,9 @@
+<mat-list>
+    <mat-list-item *ngFor="let song of songs">
+        <mat-icon matListIcon>music_note</mat-icon>
+        <span matLine class="name truncate">{{song.name}}</span>
+        <span class="duration">{{song.duration_ms}}</span>
+        <span matLine class="description truncate"><span>{{song.artists[0].name}}</span> | <span>{{album_name}}</span></span>
+        <i class="material-icons" (click)="add_song(song)">add</i>
+    </mat-list-item>
+</mat-list>

@@ -1,3 +1,18 @@
-<p>
-  album-detail works!
-</p>
+<mat-list>
+  <mat-grid-list cols="1" rowHeight="750px">
+    <mat-grid-tile>
+        <div>
+          <h4 class="center-align">{{details.name}}</h4>
+          <div *ngIf="details.images[0] !== undefined" class="content z-depth-2"  [ngStyle]="{'background-image': 'url(' + details.images[0].url + ')' }">
+          </div>
+          <div class="content valign-wrapper z-depth-2" *ngIf="details.images[0] == undefined">
+          </div>
+          <h4 class="center-align" (click)="get_artist(details.artists[0].id)">{{details.artists[0].name}}</h4>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-list>
+<app-album-song-list [songs]="details.tracks.items" [album_name]="details.name"></app-album-song-list>
+
+
+

@@ -1,22 +1,21 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import { DataShareService } from '../../services/data-share.service';
 
 @Component({
-  selector: 'app-song-list',
-  templateUrl: './song-list.component.html',
-  styleUrls: ['./song-list.component.scss']
+  selector: 'app-album-song-list',
+  templateUrl: './album-song-list.component.html',
+  styleUrls: ['./album-song-list.component.scss']
 })
-export class SongListComponent implements OnChanges {
+export class AlbumSongListComponent implements OnChanges {
 
   @Input() songs: Array<any>;
+  @Input() album_name: string;
 
   constructor(private data_service: DataShareService) { }
 
   ngOnChanges() {
 
-    console.log(this.songs);
-    
     this.songs = this.songs.map( item => {
 
       const new_time: number = item.duration_ms / 1000;
@@ -28,4 +27,12 @@ export class SongListComponent implements OnChanges {
       return item;
     });
   }
+
+  add_song(song) {
+
+    const new_song = Object.assign({album: {name: this.album_name}}, song);
+
+    this.data_service.openSnackBar(new_song);
+  }
+
 }

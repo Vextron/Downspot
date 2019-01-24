@@ -1,18 +1,16 @@
-<mat-grid-list cols="4" rowHeight="350px" gutterSize="20px">
+<mat-grid-list cols="3" rowHeight="350px" gutterSize="10px">
   <mat-grid-tile *ngFor="let artist of artists">
       <div>
-        <div class="content artist z-depth-2" *ngIf="artist.images[0] !== undefined" [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')' }">
+        <div *ngIf="artist.images[0] !== undefined" (click)="details(artist.id)" class="content artist z-depth-2"  [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')' }">
           <div class="content-overlay round"></div>
           <div class="content-details valign-wrapper">
-              <i class="large material-icons">list</i>
-              <i class="large material-icons" (click)="data_service.openSnackBar(playlist)">add</i>
+              <i class="medium material-icons">person</i>
           </div>
         </div>
-        <div class="content artist default valign-wrapper z-depth-2" *ngIf="artist.images[0] == undefined">
+        <div (click)="details(artist.id)" class="content artist default valign-wrapper z-depth-2" *ngIf="artist.images[0] == undefined">
           <div class="content-overlay round"></div>
           <div class="content-details valign-wrapper">
-              <i class="large material-icons">list</i>
-              <i class="large material-icons" (click)="data_service.openSnackBar(playlist)">add</i>
+              <i class="medium material-icons">person</i>
           </div>
         </div>
         <p class="center-align">{{artist.name}}</p>  

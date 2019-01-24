@@ -1,3 +1,14 @@
-<p>
-  playlist-details works!
-</p>
+<mat-list>
+    <mat-grid-list cols="1" rowHeight="750px">
+        <mat-grid-tile>
+            <div>
+            <h4 class="center-align">{{details.name}}</h4>
+            <div *ngIf="details.images[0] !== undefined" class="content z-depth-2"  [ngStyle]="{'background-image': 'url(' + details.images[0].url + ')' }">
+            </div>
+            <div class="content valign-wrapper z-depth-2" *ngIf="details.images[0] == undefined">
+            </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</mat-list>
+<app-playlist-song-list [songs]="tracks" [playlist_name]="details.name"></app-playlist-song-list>

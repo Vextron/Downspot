@@ -29,6 +29,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.top_choices = this.route.snapshot.data.profile_data;
+    this.top_choices.top_tracks = this.top_choices.top_tracks.items.map( track => track.track);
+
+    console.log(this.top_choices.top_tracks);
   }
 
   ngAfterViewInit() {

@@ -37,14 +37,21 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DownloadComponent } from './components/download/download.component';
 import { PlaylistDetailsComponent } from './components/playlist-details/playlist-details.component';
 import { ArtistsPageComponent } from './components/artists-page/artists-page.component';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
+import { AlbumsPageComponent } from './components/albums-page/albums-page.component';
+import { AlbumDetailComponent } from './components/album-detail/album-detail.component';
 
 import { ProfileResolver } from './resolvers/profile-resolver.resolver';
 import { ArtistsResolver } from './resolvers/artists-resolver.resolver';
 import { ArtistDetailResolver } from './resolvers/artist-detail.resolver';
 import { AlbumsResolver } from './resolvers/albums-resolver.resolver';
-import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
-import { AlbumsPageComponent } from './components/albums-page/albums-page.component';
-import { AlbumDetailComponent } from './components/album-detail/album-detail.component';
+import { AlbumDetailResolver } from './resolvers/album-detail.resolver';
+import { PlaylistResolver } from './resolvers/playlists-resolver.resolver';
+import { PlaylistDetailResolver } from './resolvers/playlist-detail.resolver';
+
+import { AlbumSongListComponent } from './components/album-song-list/album-song-list.component';
+import { PlaylistsPageComponent } from './components/playlists-page/playlists-page.component';
+import { PlaylistSongListComponent } from './components/playlist-song-list/playlist-song-list.component';
 
 const app_routes: Routes = [
 
@@ -57,10 +64,12 @@ const app_routes: Routes = [
       {path: 'artists', component: ArtistsPageComponent, resolve: { artists_data: ArtistsResolver }},
       {path: 'artist/:id', component: ArtistDetailComponent, resolve: { artist_data: ArtistDetailResolver }},
       {path: 'albums', component: AlbumsPageComponent, resolve: { albums_data: AlbumsResolver }},
-      {path: 'album/:id', component: AlbumsPageComponent, resolve: { albums_data: AlbumsResolver }},
-      {path: 'download', component: DownloadComponent},
-      {path: 'playlist/:id', component: PlaylistDetailsComponent}
-  ] },
+      {path: 'album/:id', component: AlbumDetailComponent, resolve: { album_tracks: AlbumDetailResolver }},
+      {path: 'playlists', component: PlaylistsPageComponent, resolve: { playlists: PlaylistResolver }},
+      {path: 'playlist/:id', component: PlaylistDetailsComponent, resolve: { playlist_tracks: PlaylistDetailResolver }},
+      {path: 'download', component: DownloadComponent}
+
+  ]},
   { path: 'check', component: CheckComponent },
 ];
 @NgModule({
@@ -80,7 +89,10 @@ const app_routes: Routes = [
     ArtistsPageComponent,
     ArtistDetailComponent,
     AlbumsPageComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    AlbumSongListComponent,
+    PlaylistsPageComponent,
+    PlaylistSongListComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +114,8 @@ const app_routes: Routes = [
     MatRadioModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver, ArtistDetailResolver, AlbumsResolver],
+  providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver, ArtistDetailResolver, AlbumsResolver,
+              AlbumDetailResolver, PlaylistResolver, PlaylistDetailResolver],
   bootstrap: [AppComponent]
 })
 

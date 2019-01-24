@@ -3,28 +3,27 @@ const router = express.Router();
 
 const SpotifyWebApi = require('spotify-web-api-node');
 
-router.get('/albums', async (req, res) => {
+router.get('/playlists', async (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
   
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    const save = await loggedInSpotifyApi.getMySavedAlbums({limit: 20});
+    const playlists = await loggedInSpotifyApi.getUserPlaylists();
 
-    res.send(save.body);
+    res.send(playlists.body);
 })
 
-router.get('/album/:id', async (req, res) => {
+router.get('/playlist/:id', async (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
-
     const id = req.params.id;
 
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    const tracks = await loggedInSpotifyApi.getAlbum(id);
+    const playlist =  await loggedInSpotifyApi.getPlaylist(id);
 
-    res.send(tracks.body);
+    res.send(playlist.body);
 })
 
 module.exports = router;

@@ -1,0 +1,42 @@
+.mat-grid-list {
+
+    margin-bottom: 50px;
+}
+
+
+.mat-grid-tile {
+
+
+    div {
+
+        height: 400px;
+        width: 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    div.default {
+
+        background-image: url(../../../assets/default.svg);
+        background-size: 50%;
+    }
+
+    div.artist {
+
+        border-radius: 50%;
+    }
+
+    h4 {
+
+        font-family: var(--font-family);
+        color: white;
+        
+        text-align: center;
+    }
+}
+
+div.container {
+
+    font-family: var(--font-family);
+}
