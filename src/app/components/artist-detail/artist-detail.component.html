@@ -1,3 +1,25 @@
-<p>
-  artist-detail works!
-</p>
+<mat-grid-list cols="2" rowHeight="450px" gutterSize="10px">
+  <mat-grid-tile>
+      <div>
+        <div *ngIf="artist_detail.artist.images[0] !== undefined" class="content artist z-depth-2"  [ngStyle]="{'background-image': 'url(' + artist_detail.artist.images[0].url + ')' }">
+        </div>
+        <div class="content artist default valign-wrapper z-depth-2" *ngIf="artist_detail.artist.images[0] == undefined">
+        </div>
+        <h4 class="center-align truncate">{{artist_detail.artist.name}}</h4>  
+      </div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-song-list [songs]="artist_detail.artist_top_tracks.tracks"></app-song-list>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<div class="container">
+  <div class="carousel">
+      <a class="carousel-item" [routerLink]="['/navigation/artist', item.id]" *ngFor="let item of artist_detail.related_artists.artists" >
+        <div [ngStyle]="{'background-image': 'url(' + item.images[0].url + ')' }"></div>
+        <p class="center-align">{{item.name}}</p>
+      </a>
+  </div>
+</div>
+
+<app-albums [albums]="artist_detail.artist_albuns.items"></app-albums>

@@ -6,6 +6,7 @@ const download = require('./routes/download');
 const profile = require('./routes/profile');
 const search = require('./routes/search');
 const artists = require('./routes/artists');
+const album = require('./routes/album');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/', download);
 app.use('/', profile);
 app.use('/', search);
 app.use('/', artists);
+app.use('/', album);
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname)));
 

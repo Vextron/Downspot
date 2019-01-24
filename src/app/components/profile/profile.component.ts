@@ -29,16 +29,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.top_choices = this.route.snapshot.data.profile_data;
-    this.top_choices.top_tracks.items = this.top_choices.top_tracks.items.map( item => {
-
-      const new_time: number = item.duration_ms / 1000;
-
-      const min = (new_time / 60).toString().split('.')[0];
-      const sec = Math.floor((new_time % 60));
-      item.duration_ms = min + ':' + Math.floor((sec / 10)).toString() + Math.floor((sec % 10)).toString();
-
-      return item;
-    });
   }
 
   ngAfterViewInit() {

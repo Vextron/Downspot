@@ -43,34 +43,10 @@ h2:first-child {
     }
 }
 
+app-song-list {
 
-#top-songs {
-
-    background-color: rgba(13, 11, 22, 0.6);
-    backdrop-filter: blur(30px);
-
-    margin: 0 auto 40px; 
-
-    width: 90%;
-        
-    .mat-list-item {
-
-        width: 100%;
-        height: 50px;
-
-        span {
-
-            color: rgba(255, 255, 255, 0.7);
-        }
+    width: 60%;
     
-        .mat-icon {
-    
-            color: rgba(0, 187, 188, 0.8) !important;
-            font-size: 30px;
-            margin-left: 10px !important;
-            cursor: pointer;
-        }
-    }
 }
 
 #top-playlists {

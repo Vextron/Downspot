@@ -40,7 +40,11 @@ import { ArtistsPageComponent } from './components/artists-page/artists-page.com
 
 import { ProfileResolver } from './resolvers/profile-resolver.resolver';
 import { ArtistsResolver } from './resolvers/artists-resolver.resolver';
+import { ArtistDetailResolver } from './resolvers/artist-detail.resolver';
+import { AlbumsResolver } from './resolvers/albums-resolver.resolver';
 import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
+import { AlbumsPageComponent } from './components/albums-page/albums-page.component';
+import { AlbumDetailComponent } from './components/album-detail/album-detail.component';
 
 const app_routes: Routes = [
 
@@ -51,13 +55,14 @@ const app_routes: Routes = [
       {path: 'search', component: WebDownloaderComponent},
       {path: 'profile', component: ProfileComponent, resolve: { profile_data: ProfileResolver }},
       {path: 'artists', component: ArtistsPageComponent, resolve: { artists_data: ArtistsResolver }},
-      {path: 'artists/:id', component: ArtistsPageComponent},
+      {path: 'artist/:id', component: ArtistDetailComponent, resolve: { artist_data: ArtistDetailResolver }},
+      {path: 'albums', component: AlbumsPageComponent, resolve: { albums_data: AlbumsResolver }},
+      {path: 'album/:id', component: AlbumsPageComponent, resolve: { albums_data: AlbumsResolver }},
       {path: 'download', component: DownloadComponent},
       {path: 'playlist/:id', component: PlaylistDetailsComponent}
   ] },
   { path: 'check', component: CheckComponent },
-
-]
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +78,9 @@ const app_routes: Routes = [
     DownloadComponent,
     PlaylistDetailsComponent,
     ArtistsPageComponent,
-    ArtistDetailComponent
+    ArtistDetailComponent,
+    AlbumsPageComponent,
+    AlbumDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +102,7 @@ const app_routes: Routes = [
     MatRadioModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver],
+  providers: [SpotifyService, DataShareService, ProfileResolver, ArtistsResolver, ArtistDetailResolver, AlbumsResolver],
   bootstrap: [AppComponent]
 })
 

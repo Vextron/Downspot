@@ -20,7 +20,7 @@ router.get('/artists', (req, res) => {
     })
 })
 
-/* router.get('/artists/:id', (req, res) => {
+router.get('/artist/:id', (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
   
@@ -30,34 +30,43 @@ router.get('/artists', (req, res) => {
 
     let response = {}
 
-    loggedInSpotifyApi.getArtistAlbums(id).then( data => {
+    loggedInSpotifyApi.getArtist(id).then( data => {
 
-        response['artist_albuns'] = data.body;
+        response['artist'] = data.body
 
-        loggedInSpotifyApi.getArtistTopTracks(id).then( data => {
+        loggedInSpotifyApi.getArtistAlbums(id).then( data => {
 
-            response['artist_top_tracks'] = data.body;
-
-            loggedInSpotifyApi.getArtistRelatedArtists(id).then( data => {
-
-                response['related_artists'] = data.body;
-
-                res.send(response);
-
+            response['artist_albuns'] = data.body;
+    
+            loggedInSpotifyApi.getArtistTopTracks(id, 'GB').then( data => {
+    
+                response['artist_top_tracks'] = data.body;
+    
+                loggedInSpotifyApi.getArtistRelatedArtists(id).then( data => {
+    
+                    response['related_artists'] = data.body;
+    
+                    res.send(response);
+    
+                }).catch( err => {
+    
+                    console.log(err);
+                })
+    
             }).catch( err => {
-
+    
                 console.log(err);
             })
-
+    
         }).catch( err => {
-
+    
             console.log(err);
         })
-
+        
     }).catch( err => {
 
         console.log(err);
     })
-}) */
+})
 
 module.exports = router;

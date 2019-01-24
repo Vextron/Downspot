@@ -47,5 +47,26 @@ export class SpotifyService {
 
         return this.http.get('http://localhost:4200/api/artists', {headers: header});
     }
+
+    get_artist_detail(access_token: string, id: string) {
+
+        const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+
+        return this.http.get(`http://localhost:4200/api/artist/${id}`, {headers: header});
+    }
+
+    get_saved_albums(access_token: string) {
+
+        const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+
+        return this.http.get('http://localhost:4200/api/albums', {headers: header});
+    }
+
+    get_album_tracks(access_token: string, id: string) {
+
+        const header = new HttpHeaders().set('Authorization', `Bearer ${access_token}`);
+
+        return this.http.get(`http://localhost:4200/api/album/${id}`, {headers: header});
+    }
 }
 

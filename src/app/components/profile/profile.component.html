@@ -12,13 +12,7 @@
 
 <h2>Your Poison Has Been</h2>
 
-<mat-list id="top-songs">
-    <mat-list-item *ngFor="let song of top_choices.top_tracks.items">
-        <span matLine class="truncate">{{song.name}}</span>
-        <mat-icon>play_circle_outline</mat-icon>
-        <mat-icon (click)="data_service.openSnackBar(song)">add</mat-icon>
-    </mat-list-item>
-</mat-list>
+<app-song-list [songs]="top_choices.top_tracks.items"></app-song-list>
 
 <h2>Some Of Your Playlists</h2>
 

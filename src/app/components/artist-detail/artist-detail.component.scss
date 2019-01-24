@@ -1,0 +1,84 @@
+.mat-grid-list {
+
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+
+.mat-grid-tile {
+
+
+    div {
+
+        height: 300px;
+        width: 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    div.default {
+
+        background-image: url(../../../assets/default.svg);
+        background-size: 50%;
+    }
+
+    div.artist {
+
+        border-radius: 50%;
+    }
+
+    h4 {
+
+        font-family: var(--font-family);
+        color: white;
+        
+        text-align: center;
+    }
+
+    app-song-list {
+
+        width: 100%;
+        margin-right: 20px;
+    }
+
+    app-albums {
+
+        width: 90%;
+    }
+}
+
+div.container {
+
+    font-family: var(--font-family);
+}
+ 
+ div.carousel {
+ 
+    width: auto;
+
+    a {
+
+        height: 300px;
+        width: 300px;
+
+        div {
+
+            height: 250px;
+            width: 250px;
+            margin: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        p {
+
+            font-family: var(--font-family);
+            color: white;
+            font-size: 18px;
+            text-align: center;
+        }
+    }
+}
