@@ -8,12 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlaylistsPageComponent implements OnInit {
 
-  private timer = null;
-
   playlists: any;
   cpy_playlists: any;
-  value = '';
-
+ 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -22,28 +19,9 @@ export class PlaylistsPageComponent implements OnInit {
     this.cpy_playlists = this.playlists;
   }
 
-  clear() {
+  on_filter(filtered_list) {
 
-    this.value = '';
-    this.cpy_playlists = this.playlists;
-  }
-
-  filter() {
-
-    clearTimeout(this.timer);
-
-    this.timer = setTimeout(() => {
-
-      if (this.value !== '') {
-
-        this.cpy_playlists = this.playlists.filter( artist => artist.name.toLowerCase().startsWith(this.value.toLocaleLowerCase()));
-
-      } else {
-
-        this.cpy_playlists = this.playlists;
-      }
-
-    }, 300);
+    this.cpy_playlists = filtered_list;
   }
 
 }

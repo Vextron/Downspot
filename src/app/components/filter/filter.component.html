@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">search</i>
+      <input id="search" type="text" [(ngModel)]="value" (keydown)="filter()">
+      <label for="search">Filter</label>
+      <i id="close" *ngIf="value" (click)="clear()" class="material-icons prefix">clear</i>
+    </div>
+  </div>
+</div>

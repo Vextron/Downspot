@@ -1,11 +1,3 @@
-<div class="container">
-    <div class="row">
-        <div class="input-field col s12">
-        <i class="material-icons prefix">search</i>
-        <input id="search" type="text"[(ngModel)]="value" (keydown)="filter()">
-        <label for="search">Filter</label>
-        <i id="close" *ngIf="value" (click)="clear()" class="material-icons prefix">clear</i>
-        </div>
-    </div>
-</div>
+<app-filter [list]="playlists" [cpy_list]="cpy_playlists" (filtered_list)="on_filter($event)"></app-filter>
+
 <app-playlists [playlists]="cpy_playlists"></app-playlists>

@@ -54,6 +54,7 @@ import { AlbumSongListComponent } from './components/album-song-list/album-song-
 import { PlaylistsPageComponent } from './components/playlists-page/playlists-page.component';
 import { PlaylistSongListComponent } from './components/playlist-song-list/playlist-song-list.component';
 import { SavedSongsComponent } from './components/saved-songs/saved-songs.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 const app_routes: Routes = [
 
@@ -96,7 +97,8 @@ const app_routes: Routes = [
     AlbumSongListComponent,
     PlaylistsPageComponent,
     PlaylistSongListComponent,
-    SavedSongsComponent
+    SavedSongsComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,

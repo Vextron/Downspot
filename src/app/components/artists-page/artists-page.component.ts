@@ -23,10 +23,7 @@ export class ArtistsPageComponent implements OnInit {
 
   artists: any;
   cpy_artists: Artist[] = [];
-  value = '';
-
-  private timer = null;
-
+  
   constructor(public data_service: DataShareService, private serive: SpotifyService, private route: ActivatedRoute,
               private router: Router) { }
 
@@ -34,38 +31,11 @@ export class ArtistsPageComponent implements OnInit {
 
     this.artists = this.route.snapshot.data.artists_data['items'];
     this.cpy_artists = this.artists;
-
-    console.log(this.artists);
-
   }
 
-  clear() {
+  on_filter(filtered_list) {
 
-    this.value = '';
-    this.cpy_artists = this.artists;
-  }
-
-  filter_artists() {
-
-    clearTimeout(this.timer);
-
-    this.timer = setTimeout(() => {
-
-      if (this.value !== '') {
-
-        this.cpy_artists = this.artists.filter( artist => artist.name.toLowerCase().startsWith(this.value.toLocaleLowerCase()));
-
-      } else {
-
-        this.cpy_artists = this.artists;
-      }
-
-    }, 300);
-  }
-
-  details(id) {
-
-    this.router.navigate(['navigation/artist', id]);
+    this.cpy_artists = filtered_list;
   }
 
 }

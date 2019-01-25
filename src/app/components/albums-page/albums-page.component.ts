@@ -10,9 +10,6 @@ export class AlbumsPageComponent implements OnInit {
 
   albums: any;
   cpy_albums = [];
-  value = '';
-
-  private timer = null;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -22,28 +19,9 @@ export class AlbumsPageComponent implements OnInit {
     this.cpy_albums = this.albums;
   }
 
-  clear() {
+  on_filter(filtered_list) {
 
-    this.value = '';
-    this.cpy_albums = this.albums;
-  }
-
-  filter() {
-
-    clearTimeout(this.timer);
-
-    this.timer = setTimeout(() => {
-
-      if (this.value !== '') {
-
-        this.cpy_albums = this.albums.filter( artist => artist.name.toLowerCase().startsWith(this.value.toLocaleLowerCase()));
-
-      } else {
-
-        this.cpy_albums = this.albums;
-      }
-
-    }, 300);
+    this.cpy_albums = filtered_list;
   }
 
 }
