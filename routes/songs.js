@@ -9,9 +9,17 @@ router.get('/songs', async (req, res) => {
   
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    const save = await loggedInSpotifyApi.getMySavedTracks();
+    try {
 
-    res.send(save.body);
+        const save = await loggedInSpotifyApi.getMySavedTracks();
+        res.send(save.body);
+        
+    } catch (error) {
+        
+        console.log(error);
+        
+    }
+    
 })
 
 module.exports = router;

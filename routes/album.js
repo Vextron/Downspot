@@ -9,9 +9,16 @@ router.get('/albums', async (req, res) => {
   
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    const save = await loggedInSpotifyApi.getMySavedAlbums({limit: 20});
+    try {
 
-    res.send(save.body);
+        const save = await loggedInSpotifyApi.getMySavedAlbums({limit: 20});
+
+        res.send(save.body);
+
+    } catch (error) {
+        
+        console.log(error);
+    }
 })
 
 router.get('/album/:id', async (req, res) => {
@@ -22,9 +29,17 @@ router.get('/album/:id', async (req, res) => {
 
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    const tracks = await loggedInSpotifyApi.getAlbum(id);
+    try {
 
-    res.send(tracks.body);
+        const tracks = await loggedInSpotifyApi.getAlbum(id);
+
+        res.send(tracks.body);
+        
+    } catch (error) {
+        
+        console.log(error);
+    }
+
 })
 
 module.exports = router;

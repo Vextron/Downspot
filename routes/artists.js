@@ -3,24 +3,25 @@ const router = express.Router();
 
 const SpotifyWebApi = require('spotify-web-api-node');
 
-router.get('/artists', (req, res) => {
+router.get('/artists', async (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
   
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
 
-    loggedInSpotifyApi.getMyTopArtists().then( data => {
-        console.log(data.body);
+    try {
         
+        const data = await loggedInSpotifyApi.getMyTopArtists();
+
         res.send(data.body);
 
-    }).catch( err => {
+    } catch (error) {
 
-        console.log(err);
-    })
+        console.log(error);
+    }
 })
 
-router.get('/artist/:id', (req, res) => {
+router.get('/artist/:id', async (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
   
@@ -28,45 +29,28 @@ router.get('/artist/:id', (req, res) => {
 
     const id = req.params.id;
 
-    let response = {}
+    try {
 
-    loggedInSpotifyApi.getArtist(id).then( data => {
+        const artists = await loggedInSpotifyApi.getArtist(id);
+        const artist_albuns = await loggedInSpotifyApi.getArtistAlbums(id);
+        const artist_top_tracks = await loggedInSpotifyApi.getArtistTopTracks(id, 'GB');
+        const related_artists = await loggedInSpotifyApi.getArtistRelatedArtists(id);
 
-        response['artist'] = data.body
+        const response = {
 
-        loggedInSpotifyApi.getArtistAlbums(id).then( data => {
+            artist: artists.body,
+            artist_albuns: artist_albuns.body,
+            artist_top_tracks: artist_top_tracks.body,
+            related_artists: related_artists.body
 
-            response['artist_albuns'] = data.body;
-    
-            loggedInSpotifyApi.getArtistTopTracks(id, 'GB').then( data => {
-    
-                response['artist_top_tracks'] = data.body;
-    
-                loggedInSpotifyApi.getArtistRelatedArtists(id).then( data => {
-    
-                    response['related_artists'] = data.body;
-    
-                    res.send(response);
-    
-                }).catch( err => {
-    
-                    console.log(err);
-                })
-    
-            }).catch( err => {
-    
-                console.log(err);
-            })
-    
-        }).catch( err => {
-    
-            console.log(err);
-        })
+        }
+
+        res.send(response);
         
-    }).catch( err => {
-
-        console.log(err);
-    })
+    } catch (error) {
+        
+        console.log(error);
+    }
 })
 
 module.exports = router;

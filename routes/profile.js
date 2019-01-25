@@ -22,46 +22,35 @@ router.get('/profile', (req, res) => {
     });
 })
 
-router.get('/top', (req, res) => {
+router.get('/top', async (req, res) => {
 
     const loggedInSpotifyApi = new SpotifyWebApi();
   
     const id = req.query.id;
   
-    let response = {};
-  
     loggedInSpotifyApi.setAccessToken(req.headers['authorization'].split(' ')[1]);
- 
-    loggedInSpotifyApi.getMyRecentlyPlayedTracks({limit: 10}).then( data => {
-  
-      response['top_tracks'] = data.body;
-      
-      loggedInSpotifyApi.getMyTopArtists({limit: 4}).then( data => {
-  
-        response['top_artists'] = data.body;
-  
-        loggedInSpotifyApi.getUserPlaylists(id, {limit: 6}).then( data => {
-  
-          response['playlists'] = data.body;
-          res.send(response);
-  
-        }).catch( err => {
-  
-          console.log('Something went wrong!', err);
-  
-        })
-  
-      }).catch( err => {
-    
-        console.log('Something went wrong!', err);
+
+    try {
+
+      const top_tracks = await loggedInSpotifyApi.getMyRecentlyPlayedTracks({limit: 10});
+      const top_artists = await loggedInSpotifyApi.getMyTopArtists({limit: 4});
+      const playlists = await loggedInSpotifyApi.getUserPlaylists(id, {limit: 6});
+
+      const response = {
+
+        top_tracks: top_tracks.body,
+        top_artists: top_artists.body,
+        playlists: playlists.body
         
-      })
-  
-    }).catch( err => {
-  
-      console.log('Something went wrong!', err);
+      }
+
+      res.send(response);
       
-    })
+    } catch (error) {
+      
+      console.log(error);
+    }
+
 })
 
 module.exports = router;
