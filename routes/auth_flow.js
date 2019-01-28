@@ -3,6 +3,8 @@ const router = express.Router();
 
 const spotifyApi = require('../modules/spotify');
 const scopes = process.env.SCOPES;// || require('../tokens.json');
+console.log(scopes);
+
 const showDialog = process.env.SHOWDIALOG;// || require('../tokens.json');
 
 router.get('/login', (req, res) => {
