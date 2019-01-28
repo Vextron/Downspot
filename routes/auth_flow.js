@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const spotifyApi = require('../modules/spotify');
-const scopes = process.env.SCOPES;// || require('../tokens.json');
-console.log(scopes);
+const scopes = ["user-top-read", "user-library-read", "playlist-read-private", "user-read-recently-played"];
 
 const showDialog = process.env.SHOWDIALOG;// || require('../tokens.json');
 
