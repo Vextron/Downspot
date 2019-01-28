@@ -13,7 +13,6 @@ export class FilterComponent implements OnInit {
 
   @Input() list: any;
   @Input() cpy_list: any;
-  
   @Output() filtered_list = new EventEmitter<Array<any>>();
 
   constructor() { }

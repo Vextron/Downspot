@@ -1,15 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Varela+Round:400,600');
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 @import "./theme.scss";
 
 :root {
 
     --spotify-black: #231E1E;
     --spotify-green: #1DB954;
-    --primary-color: #4A4444;
-    --secondary-color: #919191;
-    --third-color: #AC6C82;
     --forth-color: #008D5D;
     --fifth-color: #24C490;
     --font-family: 'Roboto', sans-serif;
@@ -19,13 +17,11 @@
 html, body {
 
     width: 100% !important;
-
 }
 
 body {
 
-    //background-image: linear-gradient(to top, #f67280, #f88381, #f99385, #f9a28c, #f8b195) !important;
-    background-image: url(./assets/neon.png)!important;
+    background-image: url(./assets/neon.webp)!important;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -35,8 +31,8 @@ body {
 
 ::-webkit-scrollbar
 {
-  width: 3px;  /* for vertical scrollbars */
-  height: 3px; /* for horizontal scrollbars */
+  width: 3px;  
+  height: 3px;
   border-radius: 2px;
 }
 
@@ -45,16 +41,8 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-*:before, *:after{
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing:border-box;
-    box-sizing: border-box;
-}
-
 .grey-snackbar {
 
     background: var(--spotify-black) !important;
     color: white !important;
- }
+}

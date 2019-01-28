@@ -14,10 +14,12 @@ export class DataShareService {
                                                          : new BehaviorSubject<Object>({});
   private to_download_songs = new BehaviorSubject<Array<Object>>([]);
   private to_download_albums = new BehaviorSubject<Array<Object>>([]);
+  private to_download_playlists = new BehaviorSubject<Array<Object>>([]);
 
   user$ = this.user_source.asObservable();
   to_download_songs$ = this.to_download_songs.asObservable();
   to_download_albums$ = this.to_download_albums.asObservable();
+  to_download_playlists$ = this.to_download_playlists.asObservable();
 
   add_user(user: Object) {
 
@@ -37,6 +39,11 @@ export class DataShareService {
   add_album(album: Object) {
 
     this.to_download_albums.next([...this.to_download_albums.getValue(), album]);
+  }
+
+  add_playlist(playlist: Object) {
+
+    this.to_download_playlists.next([...this.to_download_playlists.getValue(), playlist]);
   }
 
   get_songs(): Observable<Array<Object>> {
@@ -60,6 +67,11 @@ export class DataShareService {
     } else if (to_download.type === 'album') {
 
       this.add_album(to_download);
+
+    } else if (to_download.type === 'playlist') {
+      
+      this.add_playlist(to_download);
+      
     }
 
     this.snackbar.open(message, '', {

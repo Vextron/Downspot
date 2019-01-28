@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require('path');
+const compression = require('compression')
 
 const auth_flow = require('./routes/auth_flow');
 const download = require('./routes/download');
@@ -12,9 +12,11 @@ const songs = require('./routes/songs');
 
 const app = express();
 
+app.use(compression());
+
 const port = (process.env.PORT || 8080);
 
-app.use(express.static(__dirname + '/dist'));
+app.use('', express.static(__dirname + '/dist'));
 
 app.use('/', auth_flow);
 app.use('/', download);
@@ -25,6 +27,6 @@ app.use('/', album);
 app.use('/', playlist);
 app.use('/', songs);
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname)));
+app.get('/*', (req, res) => res.sendFile(__dirname + '/dist/index.html'));
 
 app.listen(port, () => console.log("Running on port " + port))

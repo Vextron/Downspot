@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DataShareService } from '../../services/data-share.service';
 
@@ -7,16 +8,15 @@ import { DataShareService } from '../../services/data-share.service';
   templateUrl: './song-list.component.html',
   styleUrls: ['./song-list.component.scss']
 })
+
 export class SongListComponent implements OnChanges {
 
   @Input() songs: Array<any>;
 
-  constructor(private data_service: DataShareService) { }
+  constructor(private data_service: DataShareService, private router: Router) { }
 
   ngOnChanges() {
 
-    console.log(this.songs);
-    
     this.songs = this.songs.map( item => {
 
       const new_time: number = item.duration_ms / 1000;
@@ -28,4 +28,15 @@ export class SongListComponent implements OnChanges {
       return item;
     });
   }
+
+  album_details(id) {
+
+    this.router.navigate(['navigation/album', id]);
+  }
+
+  artists_details(id) {
+
+    this.router.navigate(['navigation/artist', id]);
+  }
+
 }

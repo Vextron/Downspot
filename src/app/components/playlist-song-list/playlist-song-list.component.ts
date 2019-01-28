@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { DataShareService } from '../../services/data-share.service';
+
 @Component({
   selector: 'app-playlist-song-list',
   templateUrl: './playlist-song-list.component.html',
@@ -10,7 +12,7 @@ export class PlaylistSongListComponent implements OnInit {
   @Input() songs: Array<any>;
   @Input() playlist_name: string;
 
-  constructor() { }
+  constructor(private data_service: DataShareService) { }
 
   ngOnInit() {
 
@@ -24,6 +26,13 @@ export class PlaylistSongListComponent implements OnInit {
 
       return item;
     });
+  }
+
+  add_song(song) {
+
+    const new_song = Object.assign({album: {name: this.playlist_name}}, song);
+
+    this.data_service.openSnackBar(new_song);
   }
 
 }

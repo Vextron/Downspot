@@ -23,4 +23,10 @@ export class PlaylistsComponent implements OnInit {
     this.router.navigate(['/navigation/playlist', id]);
   }
 
+  add(playlist) {
+
+    const new_playlist = {name: playlist.name, id: playlist.id, type: 'playlist'};
+    this.data_service.openSnackBar(new_playlist);
+  }
+
 }
