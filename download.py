@@ -1,5 +1,10 @@
 import sys
+import os
 import youtube_dl as ytdl
+
+if not os.path.isdir('./downloads'):
+
+    os.makedirs('./downloads')
 
 download_options = {
 
