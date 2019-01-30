@@ -1,8 +1,10 @@
 const kue = require('kue');
 
-console.log(process.env);
-
-const queue = kue.createQueue({redis: `redis${process.env.REDIS_URL}`});
+const queue = kue.createQueue({redis: { 
+    port: process.env.REDIS_PORT,
+    host: process.env.REDIS_HOST,
+    auth: process.env.REDIS_AUTH
+  }});
 
 
 module.exports = queue;
