@@ -41,11 +41,17 @@ router.get('/download', (req, res) => {
 
         const name = `./downloads/${video_name}.mp3`;
 
-        res.download(name, video_name, (err) => {
+        let file = fs.createReadStream(name);
 
-          if ( err ) throw err;
-
+        file.on('end', () => {
+  
+          fs.unlink(name, () => {
+    
+            console.log("Done");
+          })
         })
+    
+        file.pipe(res);
 
       })
 
