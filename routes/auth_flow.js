@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const spotifyApi = require('../modules/spotify');
+// NOTE: Production only
 const scopes = ["user-top-read", "user-library-read", "playlist-read-private", "user-read-recently-played"];
+const showDialog = process.env.SHOWDIALOG;
 
-const showDialog = process.env.SHOWDIALOG;// || require('../tokens.json');
+//const { scopes, showDialog } = require('../tokens.json');
 
 router.get('/login', (req, res) => {
 

@@ -6,7 +6,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class YoutubeService {
 
-  private dev = '';
+  // private endpoint = 'http://localhost:4200/api';
+  // NOTE: Production only
+  private endpoint = '';
 
   constructor(private http: HttpClient) { }
 
@@ -14,13 +16,13 @@ export class YoutubeService {
 
     const params = new HttpParams().set('name', song.name).set('artist', song.artists[0].name);
 
-    return this.http.get(this.dev + '/download_options', {params: params});
+    return this.http.get(this.endpoint + '/download_options', {params: params});
   }
 
   download_song(id, name) {
 
     const params = new HttpParams().set('video_id', id).set('name', name);
 
-    return this.http.get(this.dev + '/download', { params: params, responseType: 'blob'});
+    return this.http.get(this.endpoint + '/download', { params: params, responseType: 'blob'});
   }
 }

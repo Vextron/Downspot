@@ -1,6 +1,9 @@
 const YouTube = require('simple-youtube-api');
 
-const youtube_key = process.env.YTAPI;// || require('../tokens.json');
+// NOTE: Production only 
+const youtube_key = process.env.YTAPI;
+
+//const { youtube_key } = require('../tokens.json');
 
 const youtube = new YouTube(youtube_key);
 

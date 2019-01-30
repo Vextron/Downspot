@@ -2,8 +2,9 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 
-const { spawn } = require('child_process');
 const youtube = require('../modules/youtube');
+
+const queue = require('../modules/queue');
 
 router.get('/download_options', (req, res) => {
 
@@ -21,42 +22,45 @@ router.get('/download', (req, res) => {
     const video_id = req.query.video_id;
     const video_name = req.query.name;
   
-    console.log(video_name);
-    
     const video_url = `http://www.youtube.com/watch?v=${video_id}`
   
-    const py = spawn('python', ['download.py', video_url, video_name]);
+    const job = queue.create('download', {
+
+      video_name: video_name,
+      video_url: video_url
+
+    }).removeOnComplete(true).save( err => {
+
+      if ( err ) {
+
+        next(err);
+        return;
+      }
+
+      job.on('complete', result => {
+
+        const name = `./downloads/${video_name}.mp3`;
   
-    py.stdout.on('data', data => {
+        let file = fs.createReadStream(name);
+
+        file.on('end', () => {
   
-      console.log(data.toString())
-      
-    })
-  
-    py.stderr.on('data', data => {
-  
-      console.log(data.toString());
-      
-    })
-  
-    py.on('exit', () => {
-  
-      const name = `./downloads/${video_name}.mp3`;
-  
-      let file = fs.createReadStream(name);
-  
-      file.on('end', () => {
-  
-        fs.unlink(name, () => {
-  
-          console.log("Done");
-          
+          fs.unlink(name, () => {
+    
+            console.log("Done");
+          })
         })
+    
+        file.pipe(res);
       })
-  
-      file.pipe(res);
+
+      job.on('failed', () => {
+
+        const failedError = new Error('failed');
+        next(failedError);
+
+      });
     })
-  
   })
 
 module.exports = router;
