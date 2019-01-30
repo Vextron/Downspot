@@ -1,2 +1,2 @@
 web: npm run start
-worker: redis-server && npm run worker
+worker: src/redis-server && npm run worker
