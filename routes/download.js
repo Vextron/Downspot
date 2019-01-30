@@ -40,18 +40,14 @@ router.get('/download', (req, res) => {
       job.on('complete', result => {
 
         const name = `./downloads/${video_name}.mp3`;
-  
-        let file = fs.createReadStream(name);
 
-        file.on('end', () => {
-  
-          fs.unlink(name, () => {
-    
-            console.log("Done");
-          })
+        res.download(name, video_name, (err) => {
+
+          if ( err ) throw err;
+
+          fs.unlink(name, (err) => { if ( err ) throw err; })
         })
-    
-        file.pipe(res);
+
       })
 
       job.on('failed', () => {

@@ -9,7 +9,7 @@ const credentials = {
     redirectUri: process.env.REDIRECT
 }
 
-// const { credentials } = require('../tokens.json');
+//const { credentials } = require('../tokens.json');
 
 const spotifyApi = new SpotifyWebApi(credentials);
 

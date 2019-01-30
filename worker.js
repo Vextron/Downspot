@@ -1,11 +1,6 @@
 const { spawn } = require('child_process');
-const kue = require('kue');
 
-const queue = kue.createQueue({redis: { 
-  port: process.env.REDIS_PORT,
-  host: process.env.REDIS_HOST,
-  auth: process.env.REDIS_AUTH
-}});
+const queue = require('./modules/queue');
 
 queue.process('download', (job, done) => {
 
