@@ -1,7 +1,7 @@
 const { spawn } = require('child_process');
 const kue = require('kue');
 console.log(process.env);
-const queue = kue.createQueue({redis: `redis${process.env.REDIS_URL_STUNNEL}`});
+const queue = kue.createQueue({redis: `redis${process.env.REDIS_URL}`});
 
 queue.process('download', (job, done) => {
 
