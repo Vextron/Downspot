@@ -45,7 +45,6 @@ router.get('/download', (req, res) => {
 
           if ( err ) throw err;
 
-          fs.unlink(name, (err) => { if ( err ) throw err; })
         })
 
       })
