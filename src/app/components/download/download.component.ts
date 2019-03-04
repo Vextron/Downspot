@@ -37,6 +37,12 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const elems = document.querySelectorAll('.collapsible');
     const instances = M.Collapsible.init(elems, {});
+
+    const elemsFAB = document.querySelectorAll('.fixed-action-btn');
+    const instancesFAB = M.FloatingActionButton.init(elemsFAB, {direction: 'left'});
+
+    const elemsTol = document.querySelectorAll('.tooltipped');
+    const instancesTol = M.Tooltip.init(elemsTol, {enterDelay: 100, margin: 1});
   }
 
   ngOnDestroy(): void {

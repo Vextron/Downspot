@@ -30,6 +30,30 @@
     </li>
   </ul>
 </div>
-<button id="download" mat-fab (click)="download()">
-    <mat-icon [inline]="true">get_app</mat-icon>
-</button>
+<div id="download"  class="fixed-action-btn" (click)="download()">
+  <a class="btn-floating btn-large">
+    <i class="large material-icons">get_app</i>
+  </a>
+  <ul>
+    <li>
+        <a class="btn-floating tooltipped" data-position="top" data-tooltip="Download Albuns">
+          <i class="material-icons">album</i>
+        </a>
+    </li>
+    <li>
+      <a class="btn-floating darken-1 tooltipped" data-position="bottom" data-tooltip="Download Playlists">
+        <i class="material-icons">queue_music</i>
+      </a>
+    </li>
+    <li>
+      <a class="btn-floating tooltipped" data-position="top" data-tooltip="Download Songs">
+        <i class="material-icons">music_note</i>
+      </a>
+    </li>
+    <li>
+      <a class="btn-floating tooltipped" data-position="bottom" data-tooltip="Download All">
+        <i class="material-icons">arrow_downward</i>
+      </a>
+    </li>
+  </ul>
+</div>

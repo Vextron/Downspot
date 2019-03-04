@@ -68,8 +68,36 @@
 #download {
 
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     right: 20px;
 
     font-size: 25px;
+
+    a:first-child {
+
+        background-color: var(--spotify-green);
+    }
+
+    ul {
+
+        li:nth-child(1) a {
+
+            background-color: #008D5D;
+        }
+
+        li:nth-child(2) a {
+
+            background-color: rgb(0, 179, 119);
+        }
+
+        li:nth-child(3) a {
+
+            background-color: #24C490;
+        }
+
+        li:nth-child(4) a {
+
+            background-color: #29D9C2;
+        }
+    } 
 }
