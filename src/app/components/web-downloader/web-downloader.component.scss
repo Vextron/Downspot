@@ -7,6 +7,32 @@
     width: 100%;
 }
 
+
+.input-field {
+
+    input[type=text]:focus + label {
+
+        color: #29D9C2;
+    }
+
+    .prefix.active {
+
+        color: #29D9C2;
+    }
+
+    input[type=text] {
+
+        color: white;
+    }
+
+    input[type=text]:focus {
+        
+        border-bottom: 1px solid #29D9C2;
+        box-shadow: 0 1px 0 0 #29D9C2;
+
+    }
+} 
+
 #close {
 
     cursor: pointer;

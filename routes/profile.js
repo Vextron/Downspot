@@ -33,7 +33,7 @@ router.get('/top', async (req, res) => {
     try {
 
       const top_tracks = await loggedInSpotifyApi.getMyRecentlyPlayedTracks({limit: 10});
-      const top_artists = await loggedInSpotifyApi.getMyTopArtists({limit: 4});
+      const top_artists = await loggedInSpotifyApi.getMyTopArtists({limit: 6});
       const playlists = await loggedInSpotifyApi.getUserPlaylists(id, {limit: 6});
 
       const response = {

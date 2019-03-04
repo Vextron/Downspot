@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 @Injectable()
 export class SpotifyService {
 
-    // private endpoint = 'http://localhost:4200/api';
+    private endpoint = 'http://localhost:4200/api';
     // NOTE: Production only
-    private endpoint = '';
+    // private endpoint = '';
 
     constructor(private http: HttpClient) { }
 

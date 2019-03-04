@@ -3,10 +3,10 @@ const router = express.Router();
 
 const spotifyApi = require('../modules/spotify');
 // NOTE: Production only
-const scopes = ["user-top-read", "user-library-read", "playlist-read-private", "user-read-recently-played"];
-const showDialog = process.env.SHOWDIALOG;
+/* const scopes = ["user-top-read", "user-library-read", "playlist-read-private", "user-read-recently-played"];
+const showDialog = process.env.SHOWDIALOG; */
 
-//const { scopes, showDialog } = require('../tokens.json');
+const { scopes, showDialog } = require('../tokens.json');
 
 router.get('/login', (req, res) => {
 
@@ -22,12 +22,11 @@ router.get('/token', (req, res) => {
   
   spotifyApi.authorizationCodeGrant(authorizationCode).then( (data) => {
 
-    console.log(data);
     res.send({res:`/access_token=${data.body['access_token']}&refresh_token=${data.body['refresh_token']}`})
 
   }, function(err) {
 
-    console.log('Something went wrong when retrieving the access token!', err.message);
+    console.error('Something went wrong when retrieving the access token!', err.message);
   });
 })
 

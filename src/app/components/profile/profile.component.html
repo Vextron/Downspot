@@ -1,14 +1,6 @@
 <h2>You Have Stalked</h2>
 
-<mat-grid-list cols="4" rowHeight="250px">
-    <mat-grid-tile *ngFor="let item of top_choices.top_artists.items">
-        <div class="rec-card" [ngStyle]="{'background-image': 'url(' + item.images[0].url + ')' }">
-            <div class="rec-title">
-                <p class="center-align">{{item.name}}</p>
-            </div>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
+<app-artists [artists]="top_choices.top_artists.items"></app-artists>
 
 <h2>Your Poison Has Been</h2>
 
