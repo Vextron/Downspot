@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Af } from '@angular/core';
 
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -16,7 +16,7 @@ import * as M from '../../../assets/materialize.min.js';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
@@ -34,6 +34,12 @@ export class NavigationComponent implements OnInit {
       this.user = user;
       this.loaded = true;
     });
+  }
+
+  ngAfterViewInit() {
+
+    const elems = document.querySelectorAll('.fixed-action-btn');
+    const instances = M.FloatingActionButton.init(elems.item(0), {direction: 'bottom'});
   }
 
   close() {

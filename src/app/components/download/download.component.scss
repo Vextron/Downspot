@@ -33,10 +33,11 @@
 .collapsible {
 
     border: none;
+    width: 100%;
 
     .collapsible-header {
 
-        background-color: transparent;
+        background-color: var(--spotify-black);
         border: none;
         width: 100%;
 
@@ -56,12 +57,13 @@
     .collapsible-body {
 
         border: none;
+        background-color: var(--spotify-black);
     }
 }
 
 .collection-item {
 
-    background-color: transparent !important;
+    background-color: var(--spotify-black) !important;
     border: none;
 }
 
@@ -106,8 +108,6 @@
 
    max-width: 300px;
    background-color: var(--spotify-black);
-
-   
 }
 
 button.halfway {

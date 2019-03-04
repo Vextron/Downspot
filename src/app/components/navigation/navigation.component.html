@@ -11,18 +11,18 @@
       <h2 matSubheader>Explore</h2>
       <mat-list-item [routerLink]="['search']" routerLinkActive="active"><p>Browse</p><mat-icon mat-list-icon color="primary">language</mat-icon></mat-list-item>
       <mat-list-item [routerLink]="['download']" routerLinkActive="active"><p>Download</p><mat-icon mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
-      <mat-list-item id="logout" (click)="logout()">Log Out<mat-icon mat-list-icon>power_settings_new</mat-icon></mat-list-item>
     </mat-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-      <router-outlet></router-outlet>
-      <!-- <div id="profile-wrapper" class="valign-wrapper">
-          <p>{{user.display_name}}</p>
-          <div *ngIf="loaded" [ngStyle]="{'background-image': 'url(' + user.images[0].url + ')'}">
-          </div>
-          <mat-icon>arrow_drop_down</mat-icon>
-      </div> -->
+      <div class="fixed-action-btn" id="profile-pic" *ngIf="loaded">
+        <div class="btn-floating btn-large" [ngStyle]="{'background-image': 'url(' + user.images[0].url + ')'}">
       
+        </div>
+        <ul>
+          <li><a class="btn-floating" (click)="logout()"><i class="material-icons">power_settings_new</i></a></li>
+        </ul>
+      </div>
+      <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

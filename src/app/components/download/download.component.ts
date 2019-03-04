@@ -28,7 +28,6 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     this.data_service.get_playlists().subscribe( data => {
 
       this.playlists_to_download = data;
-      console.log(data);
     });
   }
 
@@ -46,7 +45,7 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     const instances = M.Collapsible.init(elems, {});
 
     const elemsFAB = document.querySelectorAll('.fixed-action-btn');
-    const instancesFAB = M.FloatingActionButton.init(elemsFAB, {direction: 'left'});
+    const instancesFAB = M.FloatingActionButton.init(elemsFAB.item(1), {direction: 'left'});
 
     const elemsTol = document.querySelectorAll('.tooltipped');
     const instancesTol = M.Tooltip.init(elemsTol, {enterDelay: 100, margin: 1});
