@@ -101,3 +101,20 @@
         }
     } 
 }
+
+.card {
+
+   max-width: 300px;
+   background-color: var(--spotify-black);
+
+   
+}
+
+button.halfway {
+
+    position: absolute;
+    bottom: 0px;
+    left: 220px;
+    background-color: #29D9C2;
+    color: white;
+}

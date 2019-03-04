@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { DataShareService } from '../../services/data-share.service';
+import { SpotifyService } from '../../services/spotify.service';
 
 import { Router } from '@angular/router';
 
@@ -13,7 +14,9 @@ export class PlaylistsComponent implements OnInit {
 
   @Input() playlists;
 
-  constructor(private data_service: DataShareService, private router: Router) { }
+  private hash: any = { access_token: localStorage.getItem('access_token'), refresh_token: '' };
+
+  constructor(private data_service: DataShareService, private spotify_service: SpotifyService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,8 +28,18 @@ export class PlaylistsComponent implements OnInit {
 
   add(playlist) {
 
-    const new_playlist = {name: playlist.name, id: playlist.id, type: 'playlist'};
-    this.data_service.openSnackBar(new_playlist);
+    this.spotify_service.get_playlist_detail(this.hash.access_token, playlist.id).subscribe( (data: any) => {
+
+      const new_playlist = {
+        
+        name: playlist.name,
+        image: playlist.images[0].url,
+        tracks: data.tracks.items,
+        type: 'playlist'
+      };
+     
+      this.data_service.openSnackBar(new_playlist);
+    });
   }
 
 }

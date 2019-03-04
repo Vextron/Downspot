@@ -19,6 +19,7 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { SpotifyService } from './services/spotify.service';
 import { DataShareService } from './services/data-share.service';
@@ -111,6 +112,7 @@ const app_routes: Routes = [
     MatCardModule,
     MatListModule,
     MatTabsModule,
+    MatExpansionModule,
     MatSidenavModule,
     MatGridListModule,
     ScrollDispatchModule,

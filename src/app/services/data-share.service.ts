@@ -12,6 +12,7 @@ export class DataShareService {
 
   private user_source = (!!localStorage.getItem('user')) ? new BehaviorSubject<Object>(JSON.parse(localStorage.getItem('user')))
                                                          : new BehaviorSubject<Object>({});
+
   private to_download_songs = new BehaviorSubject<Array<Object>>([]);
   private to_download_albums = new BehaviorSubject<Array<Object>>([]);
   private to_download_playlists = new BehaviorSubject<Array<Object>>([]);
@@ -56,12 +57,17 @@ export class DataShareService {
     return this.to_download_albums$;
   }
 
+  get_playlists(): Observable<Array<Objec>> {
+
+    return this.to_download_playlists$;
+  }
+
   openSnackBar(to_download) {
 
     const message = `${to_download.name} has been added to download`;
 
     if (to_download.type === 'track') {
-
+      
       this.add_song(to_download);
 
     } else if (to_download.type === 'album') {
