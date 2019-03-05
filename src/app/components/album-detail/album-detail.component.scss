@@ -1,11 +1,22 @@
-.mat-grid-list {
+h4 {
 
-    margin-bottom: 50px;
+    font-family: var(--font-family);
+    color: white;
+    
+    text-align: center;
 }
 
+#name {
+
+    cursor: pointer;
+}
+
+#name:hover {
+
+    color: #00E676;
+}
 
 .mat-grid-tile {
-
 
     div {
 
@@ -22,31 +33,4 @@
         background-size: 50%;
     }
 
-    div.artist {
-
-        border-radius: 50%;
-    }
-
-    h4 {
-
-        font-family: var(--font-family);
-        color: white;
-        
-        text-align: center;
-    }
-
-    h4:last-child {
-
-        cursor: pointer;
-    }
-
-    h4:last-child:hover {
-
-        color: #00E676;
-    }
-}
-
-div.container {
-
-    font-family: var(--font-family);
 }

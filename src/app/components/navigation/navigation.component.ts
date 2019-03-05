@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Af } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -23,6 +23,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   private hash: any = { access_token: localStorage.getItem('access_token'), refresh_token: '' };
   user: any = {};
   loaded = false;
+  songs_size = 0;
 
   constructor(private router: Router, private service: SpotifyService, private data_service: DataShareService,
               private route: ActivatedRoute) {}
@@ -33,6 +34,11 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
       this.user = user;
       this.loaded = true;
+    });
+
+    this.data_service.get_size().subscribe( data => {
+
+      this.songs_size = data.valueOf();
     });
   }
 

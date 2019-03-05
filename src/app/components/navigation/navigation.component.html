@@ -10,7 +10,7 @@
       <!-- <mat-list-item [routerLink]="['#']" routerLinkActive="active">Settings<mat-icon mat-list-icon color="primary">settings</mat-icon></mat-list-item> -->
       <h2 matSubheader>Explore</h2>
       <mat-list-item [routerLink]="['search']" routerLinkActive="active"><p>Browse</p><mat-icon mat-list-icon color="primary">language</mat-icon></mat-list-item>
-      <mat-list-item [routerLink]="['download']" routerLinkActive="active"><p>Download</p><mat-icon mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
+      <mat-list-item [routerLink]="['download']" routerLinkActive="active"><p>Download</p><mat-icon matBadge="{{songs_size}}" matBadgePosition="above before" mat-list-icon color="primary">get_app</mat-icon></mat-list-item>
     </mat-list>
   </mat-sidenav>
 
