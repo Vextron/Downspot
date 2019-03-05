@@ -30,6 +30,7 @@
 }
 
 
+
 .collapsible {
 
     border: none;
@@ -58,6 +59,11 @@
 
         border: none;
         background-color: var(--spotify-black);
+
+        p.title {
+
+            width: 90%;
+        }
     }
 }
 

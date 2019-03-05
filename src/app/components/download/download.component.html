@@ -26,6 +26,33 @@
   </div>
 </div>
 
+<div class="row">
+    <div class="col l4 m3" *ngFor="let album of albums_to_download">
+      <mat-card class="card">
+        <img mat-card-image src="{{album.image}}">
+        <div style="position: relative; width: 0; height: 0">
+          <button mat-mini-fab class="halfway">
+              <mat-icon>arrow_downward</mat-icon>
+          </button>
+        </div>
+        <mat-card-header class="truncate">
+          <mat-card-title>{{album.name}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                  <mat-panel-title>
+                     Song List
+                    </mat-panel-title>
+              </mat-expansion-panel-header>
+            
+              <p>This is the primary content of the panel.</p>
+            
+            </mat-expansion-panel>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 
 <div class="container">
   <ul class="collapsible popout">
@@ -49,7 +76,7 @@
               <ul class="collection">
                 <li class="collection-item avatar" *ngFor="let option of song.options">
                   <img src="{{option.thumbnails.default.url}}" alt="" class="circle">
-                  <span class="title">{{option.title}}</span>
+                  <p class="truncate title">{{option.title}}</p>
                   <mat-radio-button color="primary" class="secondary-content" [value]="option.id"></mat-radio-button>
                 </li>
               </ul>

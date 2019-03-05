@@ -1,9 +1,9 @@
 <mat-list>
     <mat-list-item *ngFor="let song of songs">
         <mat-icon matListIcon>music_note</mat-icon>
-        <span matLine class="name truncate">{{song.name}}</span>
+        <p matLine class="name truncate">{{song.name}}</p>
         <span class="duration">{{song.duration_ms}}</span>
-        <span matLine class="description truncate"><span (click)="artists_details(song.artists[0].id)">{{song.artists[0].name}}</span> | <span (click)="album_details(song.album.id)">{{song.album.name}}</span></span>
+        <p matLine class="description truncate"><span (click)="artists_details(song.artists[0].id)">{{song.artists[0].name}}</span> | <span (click)="album_details(song.album.id)">{{song.album.name}}</span></p>
         <i class="material-icons" (click)="data_service.openSnackBar(song)">add</i>
     </mat-list-item>
 </mat-list>

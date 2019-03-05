@@ -11,7 +11,7 @@ router.get('/download_options', (req, res) => {
     const name = req.query.name;
     const artist = req.query.artist;
   
-    youtube.searchVideos(`${name} ${artist}`, 10).then( results => {
+    youtube.searchVideos(`${name} ${artist}`, 5).then( results => {
   
       res.send(results);
     })

@@ -25,7 +25,7 @@ export class AlbumsComponent implements OnInit {
 
   add_album(album) {
 
-    const new_album = {name: album.name, tracks: album.tracks, type: 'album'};
+    const new_album = {name: album.name, tracks: album.tracks, image: album.images[0].url, type: 'album'};
 
     this.data_service.openSnackBar(new_album);
   }

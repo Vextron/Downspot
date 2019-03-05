@@ -15,6 +15,7 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private songs_to_download: Array<Object>;
   private playlists_to_download: Array<Object>;
+  private albums_to_download: Array<Object>;
   display_songs: any[] = [];
   private subscription: any;
 
@@ -23,6 +24,11 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription = this.data_service.get_songs().subscribe( data => {
 
       this.songs_to_download = data;
+    });
+
+    this.data_service.get_albums().subscribe( data => {
+
+      this.albums_to_download = data;
     });
 
     this.data_service.get_playlists().subscribe( data => {
