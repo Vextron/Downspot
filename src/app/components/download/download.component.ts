@@ -87,7 +87,7 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.display_songs.forEach( song => {
 
-      if (!!song) {
+      if (!!song && song.checked_id !== '') {
 
         this.youtube_service.download_song(song.checked_id, song.song.name).subscribe( data => {
 
