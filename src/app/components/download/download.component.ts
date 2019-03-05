@@ -74,6 +74,15 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  remove(song) {
+
+    const id = song.song.id;
+
+    this.data_service.remove_song(id);
+
+    this.display_songs = this.display_songs.filter( songD => songD.song.id !== id);
+  }
+
   download() {
 
     this.display_songs.forEach( song => {

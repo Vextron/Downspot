@@ -66,6 +66,7 @@
               </mat-list-item>
         </mat-list>
         <i class="material-icons" (click)="get_options(song)">arrow_drop_down</i>
+        <i class="material-icons" (click)="remove(song)">remove</i>
       </div>
       <div class="collapsible-body">
         <div *ngIf="!song.loaded" class="progress">

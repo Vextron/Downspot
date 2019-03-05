@@ -40,6 +40,12 @@ export class DataShareService {
     this.size.next(this.size.getValue().valueOf() + 1);
   }
 
+  remove_song(id: String) {
+    
+    this.to_download_songs.next([...this.to_download_songs.getValue().filter( song => song.id !== id)]);
+    this.size.next(this.size.getValue().valueOf() - 1);
+  }
+
   add_album(album: Object) {
     
     this.to_download_albums.next([...this.to_download_albums.getValue(), album]);
