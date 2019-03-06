@@ -117,11 +117,17 @@
    background-color: var(--spotify-black);
 }
 
-button.halfway {
+.halfway {
 
     position: absolute;
     bottom: 0px;
     left: 220px;
     background-color: #29D9C2;
     color: white;
+}
+
+.remove {
+
+    left: 5px;
+    background-color: rgb(155, 0, 0);
 }

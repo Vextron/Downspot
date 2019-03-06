@@ -7,6 +7,11 @@
             <mat-icon>arrow_downward</mat-icon>
         </button>
       </div>
+      <div style="position: relative; width: 0; height: 0">
+        <button mat-mini-fab class="remove halfway" (click)="remove_playlist(playlist.id, playlist.tracks.length)">
+            <mat-icon>remove</mat-icon>
+        </button>
+      </div>
       <mat-card-header class="truncate">
         <mat-card-title>{{playlist.name}}</mat-card-title>
       </mat-card-header>
@@ -33,6 +38,11 @@
         <div style="position: relative; width: 0; height: 0">
           <button mat-mini-fab class="halfway">
               <mat-icon>arrow_downward</mat-icon>
+          </button>
+        </div>
+        <div style="position: relative; width: 0; height: 0">
+          <button mat-mini-fab class="remove halfway" (click)="remove_album(album.id, album.tracks.length)">
+              <mat-icon>remove</mat-icon>
           </button>
         </div>
         <mat-card-header class="truncate">
@@ -66,7 +76,7 @@
               </mat-list-item>
         </mat-list>
         <i class="material-icons" (click)="get_options(song)">arrow_drop_down</i>
-        <i class="material-icons" (click)="remove(song)">remove</i>
+        <i class="material-icons" (click)="remove(song.song.id)">remove</i>
       </div>
       <div class="collapsible-body">
         <div *ngIf="!song.loaded" class="progress">
@@ -94,22 +104,22 @@
   </a>
   <ul>
     <li>
-        <a class="btn-floating tooltipped" data-position="top" data-tooltip="Download Albuns">
+        <a class="btn-floating tooltipped waves-effect waves-light" data-position="top" data-tooltip="Download Albuns">
           <i class="material-icons">album</i>
         </a>
     </li>
     <li>
-      <a class="btn-floating darken-1 tooltipped" data-position="bottom" data-tooltip="Download Playlists">
+      <a class="btn-floating darken-1 tooltipped waves-effect waves-light" data-position="bottom" data-tooltip="Download Playlists">
         <i class="material-icons">queue_music</i>
       </a>
     </li>
     <li>
-      <a class="btn-floating tooltipped" data-position="top" data-tooltip="Download Songs" (click)="download()">
+      <a class="btn-floating tooltipped waves-effect waves-light" data-position="top" data-tooltip="Download Songs" (click)="download()">
         <i class="material-icons">music_note</i>
       </a>
     </li>
     <li>
-      <a class="btn-floating tooltipped" data-position="bottom" data-tooltip="Download All">
+      <a class="btn-floating tooltipped waves-effect waves-light" data-position="bottom" data-tooltip="Download All">
         <i class="material-icons">arrow_downward</i>
       </a>
     </li>

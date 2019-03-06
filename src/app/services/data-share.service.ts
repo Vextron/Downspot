@@ -42,14 +42,26 @@ export class DataShareService {
 
   remove_song(id: String) {
     
-    this.to_download_songs.next([...this.to_download_songs.getValue().filter( song => song.id !== id)]);
+    this.to_download_songs.next([...this.to_download_songs.getValue().filter( (song: any) => song.id !== id)]);
     this.size.next(this.size.getValue().valueOf() - 1);
+  }
+
+  remove_playlist(id: String, len: number) {
+
+    this.to_download_playlists.next([...this.to_download_playlists.getValue().filter( (playlist: any) => playlist.id !== id)]);
+    this.size.next(this.size.getValue().valueOf() - len);
+  }
+
+  remove_album(id: String, len: number) {
+
+    this.to_download_albums.next([...this.to_download_albums.getValue().filter( (album: any) => album.id !== id)]);
+    this.size.next(this.size.getValue().valueOf() - len);
   }
 
   add_album(album: Object) {
     
     this.to_download_albums.next([...this.to_download_albums.getValue(), album]);
-    this.size.next(this.size.getValue().valueOf() + album.tracks.items.length);
+    this.size.next(this.size.getValue().valueOf() + album.tracks.length);
   }
 
   add_playlist(playlist: Object) {

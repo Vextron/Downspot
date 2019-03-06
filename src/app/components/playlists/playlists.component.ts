@@ -34,6 +34,7 @@ export class PlaylistsComponent implements OnInit {
         
         name: playlist.name,
         image: playlist.images[0].url,
+        id: playlist.id,
         tracks: data.tracks.items,
         type: 'playlist'
       };
