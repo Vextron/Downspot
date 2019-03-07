@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { DataShareService } from '../../services/data-share.service';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -19,7 +21,7 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
   display_songs: any[] = [];
   private subscription: any;
 
-  constructor(private data_service: DataShareService, private youtube_service: YoutubeService) {
+  constructor(private data_service: DataShareService, private youtube_service: YoutubeService, private router: Router) {
 
     this.subscription = this.data_service.get_songs().subscribe( data => {
 
@@ -34,6 +36,7 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     this.data_service.get_playlists().subscribe( data => {
 
       this.playlists_to_download = data;
+      console.log(data)
     });
   }
 
@@ -81,15 +84,55 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   remove_playlist(id, tracks) {
-    
-    this.playlists_to_download = this.playlists_to_download.filter( playlistD => playlistD.id !== id);
+
+    this.playlists_to_download = this.playlists_to_download.filter( (playlistD: any) => playlistD.id !== id);
     this.data_service.remove_playlist(id, tracks);
   }
 
   remove_album(id, tracks) {
-   
-    this.albums_to_download = this.albums_to_download.filter( albumD => albumD.id !== id);
+
+    this.albums_to_download = this.albums_to_download.filter( (albumD: any) => albumD.id !== id);
     this.data_service.remove_album(id, tracks);
+  }
+
+  playlist_details(id) {
+
+    this.router.navigate(['/navigation/playlist', id]);
+  }
+
+  album_details(id) {
+
+    this.router.navigate(['/navigation/album', id]);
+  }
+
+  download_set(set) {
+
+    let downloaded = 0;
+    set.downloading = true;
+    
+    set.tracks.forEach(track => {
+    
+      this.youtube_service.get_info(track.track).subscribe( data => {
+        
+        if (data) {
+
+          this.youtube_service.download_song(data[0].id, track.track.name).subscribe( sound_file => {
+
+            const file = new Blob([sound_file], { type: 'audio/mp3' });
+            saveAs(file, `${track.track.name}.mp3`);
+
+            downloaded++;
+            set.progress = downloaded / set.tracks.length;
+
+            if (downloaded === set.tracks.length) {
+
+              set.downloading = false;
+              set.downloaded = true;
+            }
+          });
+        }
+      });
+    });
   }
 
   download() {

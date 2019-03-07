@@ -27,7 +27,7 @@ import { DataShareService } from './services/data-share.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { WebDownloaderComponent } from './components/web-downloader/web-downloader.component';
+import { WebDownloaderComponent } from './components/search/web-downloader.component';
 import { CheckComponent } from './components/check/check.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';

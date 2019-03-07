@@ -36,6 +36,9 @@ export class PlaylistsComponent implements OnInit {
         image: playlist.images[0].url,
         id: playlist.id,
         tracks: data.tracks.items,
+        downloading: false,
+        downloaded: false,
+        progress: 0,
         type: 'playlist'
       };
      

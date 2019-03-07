@@ -41,7 +41,6 @@ export class DataShareService {
   }
 
   remove_song(id: String) {
-    
     this.to_download_songs.next([...this.to_download_songs.getValue().filter( (song: any) => song.id !== id)]);
     this.size.next(this.size.getValue().valueOf() - 1);
   }
@@ -58,14 +57,12 @@ export class DataShareService {
     this.size.next(this.size.getValue().valueOf() - len);
   }
 
-  add_album(album: Object) {
-    
+  add_album(album: any) {
     this.to_download_albums.next([...this.to_download_albums.getValue(), album]);
     this.size.next(this.size.getValue().valueOf() + album.tracks.length);
   }
 
-  add_playlist(playlist: Object) {
-    
+  add_playlist(playlist: any) {
     this.to_download_playlists.next([...this.to_download_playlists.getValue(), playlist]);
     this.size.next(this.size.getValue().valueOf() + playlist.tracks.length);
   }
@@ -95,7 +92,6 @@ export class DataShareService {
     const message = `${to_download.name} has been added to download`;
 
     if (to_download.type === 'track') {
-      
       this.add_song(to_download);
 
     } else if (to_download.type === 'album') {
@@ -103,7 +99,6 @@ export class DataShareService {
       this.add_album(to_download);
 
     } else if (to_download.type === 'playlist') {
-      
       this.add_playlist(to_download);
     }
 

@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /redis-5.0.3
+/downloads
 
 # dependencies
 /node_modules

@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col l4 m3" *ngFor="let playlist of playlists_to_download">
     <mat-card class="card">
+      
       <img mat-card-image src="{{playlist.image}}">
       <div style="position: relative; width: 0; height: 0">
-        <button mat-mini-fab class="halfway">
+        <button mat-mini-fab class="halfway" (click)="download_set(playlist)">
             <mat-icon>arrow_downward</mat-icon>
         </button>
       </div>
@@ -13,19 +14,13 @@
         </button>
       </div>
       <mat-card-header class="truncate">
-        <mat-card-title>{{playlist.name}}</mat-card-title>
+        <mat-card-title (click)="playlist_details(playlist.id)">{{playlist.name}}</mat-card-title>
+        <mat-card-subtitle>{{playlist.tracks.length}} Songs</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                   Song List
-                  </mat-panel-title>
-            </mat-expansion-panel-header>
-          
-            <p>This is the primary content of the panel.</p>
-          
-          </mat-expansion-panel>
+        <div class="progress" *ngIf="playlist.downloading">
+            <div class="determinate" [ngStyle]="{'width': playlist.progress*100 + '%' }"></div>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>
@@ -36,7 +31,7 @@
       <mat-card class="card">
         <img mat-card-image src="{{album.image}}">
         <div style="position: relative; width: 0; height: 0">
-          <button mat-mini-fab class="halfway">
+          <button mat-mini-fab class="halfway" (click)="download_set(album)">
               <mat-icon>arrow_downward</mat-icon>
           </button>
         </div>
@@ -46,19 +41,11 @@
           </button>
         </div>
         <mat-card-header class="truncate">
-          <mat-card-title>{{album.name}}</mat-card-title>
+          <mat-card-title (click)="album_details(album.id)">{{album.name}}</mat-card-title>
+          <mat-card-subtitle>{{album.tracks.length}} Songs</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                  <mat-panel-title>
-                     Song List
-                    </mat-panel-title>
-              </mat-expansion-panel-header>
-            
-              <p>This is the primary content of the panel.</p>
-            
-            </mat-expansion-panel>
+        
         </mat-card-content>
       </mat-card>
     </div>
