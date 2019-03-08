@@ -47,7 +47,6 @@ router.get('/download', (req, res) => {
   
           fs.unlink(name, () => {
     
-            console.log("Done");
           })
         })
     

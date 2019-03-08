@@ -1,6 +1,6 @@
 const kue = require('kue');
 
-const { redis_config } = require('../tokens.json');
+const { redis } = require('../tokens.json');
 
 // NOTE: Production only
 /* const redis_config = { 
@@ -9,7 +9,7 @@ const { redis_config } = require('../tokens.json');
   auth: process.env.REDIS_AUTH
 } */
 
-const queue = kue.createQueue({redis: redis_config});
+const queue = kue.createQueue({redis: redis});
 
 
 module.exports = queue;

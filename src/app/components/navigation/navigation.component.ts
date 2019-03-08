@@ -59,4 +59,9 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     localStorage.removeItem('user');
     this.router.navigate(['']);
   }
+
+  display_badge() {
+
+    return this.songs_size > 0;
+  }
 }

@@ -110,8 +110,9 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
     let downloaded = 0;
     set.downloading = true;
     
-    set.tracks.forEach(track => {
-    
+    set.tracks.forEach( track => {
+      console.log(set);
+      
       this.youtube_service.get_info(track.track).subscribe( data => {
         
         if (data) {
@@ -128,6 +129,39 @@ export class DownloadComponent implements OnInit, AfterViewInit, OnDestroy {
 
               set.downloading = false;
               set.downloaded = true;
+              set.progress = 0;
+            }
+          });
+        }
+      });
+    });
+  }
+
+  download_album(set) {
+
+    let downloaded = 0;
+    set.downloading = true;
+    
+    set.tracks.forEach( track => {
+      console.log(set);
+      
+      this.youtube_service.get_info(track).subscribe( data => {
+        
+        if (data) {
+
+          this.youtube_service.download_song(data[0].id, track.name).subscribe( sound_file => {
+
+            const file = new Blob([sound_file], { type: 'audio/mp3' });
+            saveAs(file, `${track.name}.mp3`);
+
+            downloaded++;
+            set.progress = downloaded / set.tracks.length;
+
+            if (downloaded === set.tracks.length) {
+
+              set.downloading = false;
+              set.downloaded = true;
+              set.progress = 0;
             }
           });
         }

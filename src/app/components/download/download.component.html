@@ -31,7 +31,7 @@
       <mat-card class="card">
         <img mat-card-image src="{{album.image}}">
         <div style="position: relative; width: 0; height: 0">
-          <button mat-mini-fab class="halfway" (click)="download_set(album)">
+          <button mat-mini-fab class="halfway" (click)="download_album(album)">
               <mat-icon>arrow_downward</mat-icon>
           </button>
         </div>
@@ -45,7 +45,9 @@
           <mat-card-subtitle>{{album.tracks.length}} Songs</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-        
+            <div class="progress" *ngIf="album.downloading">
+                <div class="determinate" [ngStyle]="{'width': album.progress*100 + '%' }"></div>
+            </div>
         </mat-card-content>
       </mat-card>
     </div>

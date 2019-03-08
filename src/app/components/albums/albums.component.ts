@@ -30,7 +30,17 @@ export class AlbumsComponent implements OnInit {
 
     this.spotify_service.get_album_tracks(this.hash.access_token, album.id).subscribe( (data: any) => {
       
-      const new_album = {name: album.name, tracks: data.tracks.items, image: album.images[0].url, type: 'album', id: album.id};
+      const new_album = {
+        
+        name: album.name,
+        tracks: data.tracks.items,
+        image: album.images[0].url,
+        downloaded: false,
+        downloading: false,
+        progress: 0,
+        type: 'album',
+        id: album.id
+      };
 
       this.data_service.openSnackBar(new_album);
     });
